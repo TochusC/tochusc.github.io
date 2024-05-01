@@ -1,0 +1,38 @@
+﻿input[type="button"]{
+    border-radius: 4px;
+    color: #333;
+    background-color: #ffffff66;
+    box-shadow: 0 0 4px var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+input[type="button"].add{
+    border-radius: 4px;
+    color: #333;
+    background-color: #ffffff66;
+    box-shadow: 0 0 2px var(--primary-color);
+    margin-bottom: 4px;
+    width: 32%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+input[type="submit"].add{
+    border-radius: 4px;
+    color: #333;
+    background-color: #ffffff66;
+    box-shadow: 0 0 2px var(--primary-color);
+    margin-bottom: 4px;
+    width: 32%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+input[type="button"]:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.primary{
+    color: var(--primary-color);
+}
+.black{
+    color: #1e1e1e;
+}

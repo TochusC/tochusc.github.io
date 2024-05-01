@@ -1,0 +1,15 @@
+﻿:root {
+    --white: #efefef;
+    --primary-color: #27496d;
+    --black: #1e1e1e;
+}
+
+html{
+    background: #efefef;
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
