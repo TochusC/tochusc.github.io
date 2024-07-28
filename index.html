@@ -34,6 +34,15 @@
                     <h2 style="color: #efefef;"></h2>
                 </div>
                 <div class="flex-container">
+                    <a href="https://github.com/TochusC" style="margin: 0 8px 0 8px">
+                        <img src="static/img/icon/github.png" style="width: auto; height: 44px">
+                    </a>
+                    <a href="https://github.com/TochusC"  style="margin: 0 8px 0 8px">
+                        <img src="static/img/icon/bilibili.png" style="width: auto; height: 48px">
+                    </a>
+                    <a href="./cv.pdf"  style="margin: 0 8px 0 8px">
+                        <el-button type="primary">下载简历</el-button>
+                    </a>
                 </div>
             </el-header>
             <el-main style="margin: 48px 24px 24px 24px">
@@ -45,8 +54,8 @@
                             <h2 class="primary">Per Aspera, Ad Astra.</h2>
                             <hr/>
                         </div>
-                        <div style="display: flex">
-                            <div class="card" style="flex: 1; justify-content: center;">
+                        <div style="display: flex; flex-wrap: wrap">
+                            <div class="card" style="flex: 1 0 360px; justify-content: center;">
                                 <div style="margin: 0 4px 24px 4px;">
                                     <el-divider  content-position="left" style="margin-bottom: 32px">
                                         <h2 style="text-align: left; color: #27496d">个人简介</h2>
@@ -57,7 +66,7 @@
                                     <p class="text">💬 任何事情我都会有问必答</p>
                                     <p class="text">⚡ 小背景: 在半年时间内，从无法确定推免名额，到连续多门课程接近满分，成绩上升近10名，再到7月份夺得国家一等奖头魁，力挽狂澜；现在确定推免名额，向未来全力以赴。</p>
                                 </div>
-                                <el-carousel style="height: 580px; box-shadow: 0 0 8px var(--secondary-color);border-radius: 6px;border: var(--secondary-color) 2px solid; "  motion-blur>
+                                <el-carousel style="height: 530px; box-shadow: 0 0 8px var(--secondary-color);border-radius: 6px;border: var(--secondary-color) 2px solid; "  motion-blur>
                                     <el-carousel-item style="height: auto;">
                                         <img src="static/img/selfie/1.jpg" style="width: 100%; height: auto" alt="selfie"/>
                                     </el-carousel-item>
@@ -77,19 +86,192 @@
                                     </el-divider>
                                 </div>
                             </div>
-                            <div class="card" style="flex: 3">
-                                <el-tabs v-model="secActiveTabs" type="border-card">
-                                    <el-tab-pane label="Motto" name="first">
-                                            <img src="static/img/motto.png" style="width: 100%; height: 100%" alt="motto"/>
+                            <div class="card" style="flex: 3 0 800px; height: auto;">
+                                <el-tabs v-model="secActiveTabs" type="border-card" style="height: 100%">
+                                    <el-tab-pane label="获奖经历" name="first" style="text-align: left">
+                                        <n-config-provider :theme="darkTheme">
+                                        </n-config-provider>
+                                            <n-h6 prefix="bar" type="warning">
+                                                <n-text type="primary">
+                                                    <n-tag type="warning" round>
+                                                        国家一等奖
+                                                    </n-tag>
+                                                    、
+                                                    <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                                                        <n-a href="https://www.bilibili.com/video/BV15MvLejEt5">
+                                                        基于文心大模型的第二课堂智能数据分析平台
+                                                        </n-a>
+                                                    </n-dropdown>
+                                                    、
+                                                    <n-a href="https://jsjds.blcu.edu.cn/">
+                                                    中国大学生计算机设计大赛（软件应用与开发赛道
+                                                    </n-a>、2024-07-25
+                                                </n-text>
+                                            </n-h6>
+                                        <n-h6 prefix="bar" type="warning">
+                                            <n-text type="primary">
+                                                <n-tag type="warning" round>
+                                                    国家三等奖
+                                                </n-tag>
+                                                、深度学习风力发电实时预测系统、“中国软件杯 “大学生软件设计大赛、、2023-07-31
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="warning">
+                                            <n-text type="primary">
+                                                <n-tag type="warning" round>
+                                                    Honorable Mention
+                                                </n-tag>
+                                                、MCM Problem B：搜索潜水艇、美国大学生数学建模大赛、2024-05-06
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="info">
+                                            <n-text type="primary">
+                                                <n-tag type="info" round>
+                                                    华东赛区一等奖（进行全国总决赛中）
+                                                </n-tag>
+                                                、基于多模态分析的心理健康群防教育系统、中国高校计算机大赛-网络技术挑战赛、2024-07-05
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="info">
+                                            <n-text type="primary">
+                                                <n-tag type="info" round>
+                                                    山东省一等奖
+                                                </n-tag>
+                                                、B题多波束测线问题、全国大学生数学建模竞赛、2023-09-20
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="info">
+                                            <n-text type="primary">
+                                                <n-tag type="info" round>
+                                                    华东赛区二等奖
+                                                </n-tag>
+                                                、SDN运维管理系统、中国高校计算机大赛-网络技术挑战赛、2023-06-26
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="info">
+                                            <n-text type="primary">
+                                                <n-tag type="info" round>
+                                                    北部区域赛三等奖
+                                                </n-tag>
+                                                、AI赋能的个性化智能教学平台、中国大学生服务外包创新创业大赛、2024-06-01
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="info">
+                                            <n-text type="primary">
+                                                <n-tag type="info" round>
+                                                    省级赛优秀奖
+                                                </n-tag>
+                                                、中药工艺、中国大学生计算机设计大赛（数媒游戏交互赛道）、2023-08-01
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar" type="info">
+                                            <n-text type="primary">
+                                                <n-tag type="info" round>
+                                                    定向越野省部级体育赛事
+                                                </n-tag>
+                                                2023大运河定向巡回赛-位次：87、江苏省国际体育交流中心、2023-05-03
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar">
+                                            <n-text type="primary">
+                                                <n-tag type="primary" round>
+                                                    校级荣誉
+                                                </n-tag>
+                                                、2021-2022优秀学生、中国石油大学（华东）、2023-02-01
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar">
+                                            <n-text type="primary">
+                                                <n-tag type="primary" round>
+                                                    校级荣誉
+                                                </n-tag>
+                                                、2022-2023优秀学生、中国石油大学（华东）、2023-11-01
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar">
+                                            <n-text type="primary">
+                                                <n-tag type="primary" round>
+                                                    校级荣誉
+                                                </n-tag>
+                                                、2021-2022综合优秀奖学金、中国石油大学（华东）、2022-12-01
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar">
+                                            <n-text type="primary">
+                                                <n-tag type="primary" round>
+                                                    校级荣誉
+                                                </n-tag>
+                                                、2022-2023综合优秀奖学金、中国石油大学（华东）、2023-12-01
+                                            </n-text>
+                                        </n-h6>
+                                        <n-h6 prefix="bar">
+                                            <n-text type="primary">
+                                                <n-tag type="primary" round>
+                                                    校级荣誉
+                                                </n-tag>
+                                                、优秀共青团员、共青团中国石油大学（华东）委员会、2023-12-01
+                                            </n-text>
+                                        </n-h6>
+                                    </el-tab-pane>
+                                    <el-tab-pane label="简历" name="second">
+                                        <embed src="./cv.pdf" width="100%" height="840px" type="application/pdf">
+                                    </el-tab-pane>
+                                    <el-tab-pane label="Motto" name="third">
+                                        <el-scrollbar>
+                                            <img src="static/img/motto.png" style="width: 100%; height: auto" alt="motto"/>
+                                            <el-text>
+                                                "Per aspera ad astra", from Finland in the Nineteenth Century, 1894
+                                            </el-text>
+                                        </el-scrollbar>
                                     </el-tab-pane>
                                 </el-tabs>
                             </div>
                         </div>
                     </el-tab-pane>
-                    <el-tab-pane label="Config" name="second">Config</el-tab-pane>
-                    <el-tab-pane label="Role" name="third">Role</el-tab-pane>
-                    <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+                    <el-tab-pane label="项目介绍" name="second">
+                        <div class="card">
+                            <n-result status="418" title="仍在施工中..." description="一切尽在不言中">
+                                <template #footer>
+                                    <n-button>接受真相就是这么简单</n-button>
+                                </template>
+                                <template #icon>
+                                    <div style="font-size: 128px">
+                                        🛠️
+                                    </div>
+                                </template>
+                            </n-result>
+                        </div>
+                    </el-tab-pane>
+                    <el-tab-pane label="个人陈述" name="third">
+                        <div class="card">
+                            <n-result status="418" title="仍在施工中..." description="一切尽在不言中">
+                                <template #footer>
+                                    <n-button>接受真相就是这么简单</n-button>
+                                </template>
+                                <template #icon>
+                                    <div style="font-size: 128px">
+                                        🛠️
+                                    </div>
+                                </template>
+                            </n-result>
+                        </div>
+                    </el-tab-pane>
+                    <el-tab-pane label="更多" name="fourth">
+                        <div class="card">
+                            <n-result status="418" title="仍在施工中..." description="一切尽在不言中">
+                                <template #footer>
+                                    <n-button>接受真相就是这么简单</n-button>
+                                </template>
+                                <template #icon>
+                                    <div style="font-size: 128px">
+                                        🛠️
+                                    </div>
+                                </template>
+                            </n-result>
+                        </div>
+                    </el-tab-pane>
                 </el-tabs>
+
             </el-main>
         </el-container>
         <el-backtop :right="100" :bottom="100" />
@@ -100,15 +282,40 @@
 
     <script>
         const { createApp, ref } = Vue
+        const { darkTheme } = naive
         const App = {
           setup() {
               const message = ref('Hello vue!')
               const activeTabs = ref("first")
               const secActiveTabs = ref("first")
+              const tableData = [
+                  {
+                      date: '2016-05-03',
+                      name: 'Tom',
+                      address: 'No. 189, Grove St, Los Angeles',
+                  },
+                  {
+                      date: '2016-05-02',
+                      name: 'Tom',
+                      address: 'No. 189, Grove St, Los Angeles',
+                  },
+                  {
+                      date: '2016-05-04',
+                      name: 'Tom',
+                      address: 'No. 189, Grove St, Los Angeles',
+                  },
+                  {
+                      date: '2016-05-01',
+                      name: 'Tom',
+                      address: 'No. 189, Grove St, Los Angeles',
+                  },
+              ]
               return {
+                  darkTheme,
                   message,
                   activeTabs,
                   secActiveTabs,
+                  tableData
               }
           }
         };
@@ -162,7 +369,6 @@
     .card {
         border-radius: 6px;
         padding: 12px;
-        height: 990px;
         background: #fefefe;
         text-align: center;
         margin: 24px;
