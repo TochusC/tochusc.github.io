@@ -3,340 +3,248 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-
-    <script src="https://unpkg.com/vue@3"></script>
-    
-    <!-- import CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/element-plus/dist/index.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/element-plus/theme-chalk/dark/css-vars.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./static/css/base.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./static/css/styles.css"
-    />
+    <link rel="icon" href="./static/img/selfie/me.png" type="image/x-icon" />
 
     <!-- import JavaScript -->
-    <script src="https://unpkg.com/element-plus"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/naive-ui"></script>
     <script src="static/js/data.js"></script>
-
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="static/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css" />
-
-    <title>云开见月明警告⚠</title>
+    
+    <title>许祖耀 | XU ZUYAO | 大三 |👋</title>
   </head>
 
   <body>
-    <!-- 背景动效 -->
-    <canvas
-      height="926"
-      width="1920"
-      style="position: fixed; top: 0; left: 0; z-index: -1; opacity: 1"
-      id="canvas"
-    ></canvas>
-    <script type="text/javascript" src="static/js/dat.gui.min.js"></script>
-    <script type="text/javascript" src="static/js/effect.js"></script>
-
     <div id="app">
-      <el-container style="z-index: 10000">
-        <el-header id="navi-header">
-          <div
-            id="name-container"
-            class="flex-container"
-            style="margin-left: 24px"
-          >
-            <h2 style="color: #efefef" class="unselectable-on-hover">
-              许祖耀 XU ZUYAO
-            </h2>
-            <h2 style="color: #efefef"></h2>
-          </div>
-          <div class="flex-container">
-            <a href="https://github.com/TochusC" style="margin: 0 8px 0 8px">
-              <img
-                src="static/img/icon/github.png"
-                style="width: auto; height: 44px"
-              />
-            </a>
-            <a href="https://github.com/TochusC" style="margin: 0 8px 0 8px">
-              <img
-                src="static/img/icon/bilibili.png"
-                style="width: auto; height: 48px"
-              />
-            </a>
-            <a href="./cv.pdf" style="margin: 0 8px 0 8px">
-              <el-button type="primary">下载简历</el-button>
-            </a>
-          </div>
-        </el-header>
-        <el-main style="margin: 48px 24px 24px 24px">
-          <el-tabs v-model="activeTabs">
-            <el-tab-pane label="简介" name="first">
-              <div id="tittle-container">
-                <hr />
-                <h1 class="primary">循此苦旅，终抵繁星。</h1>
-                <h2 class="primary">Per Aspera, Ad Astra.</h2>
-                <hr />
-              </div>
-              <div style="display: flex; flex-wrap: wrap">
-                <div
-                  class="card"
-                  style="flex: 1 0 360px; justify-content: center"
-                >
-                  <div style="margin: 0 4px 24px 4px">
-                    <el-divider
-                      content-position="left"
-                      style="margin-bottom: 32px"
-                    >
-                      <h2 style="text-align: left; color: #27496d">个人简介</h2>
-                    </el-divider>
-                    <p class="text">
-                      许祖耀，中国石油大学（华东），计算机科学与技术专业，大三，将于2025年6月毕业。
-                    </p>
-                    <p class="text">🔭 现在正在准备推荐免试研究生</p>
-                    <p class="text">
-                      🌱 在努力学习 "关于计算机科学的一切（主要：CSAPP，408）"
-                    </p>
-                    <p class="text">💬 任何事情我都会有问必答</p>
-                    <p class="text">
-                      ⚡ 小背景:
-                      在半年时间内，从无法确定推免名额，到连续多门课程接近满分，成绩上升近10名，再到7月份夺得国家一等奖头魁，力挽狂澜；现在确定推免名额，向未来全力以赴。
-                    </p>
+      <div id="header-container">
+        <n-h1 prefix="bar" style="margin: 0; font-size: 28px;">
+          <n-text type="primary">
+            许祖耀 | XU ZUYAO
+          </n-text>
+        </n-h1>
+      </div>
+      <div id="body-container">
+        <n-scrollbar style="max-height: 93vh">
+          <div id="profile-container">
+            <div id="left-container">
+              <div id="selfie-container">
+                <n-popover trigger="hover" placement="right">
+                  <template #trigger>
+                    <n-avatar
+                      round
+                      :size="256"
+                      src="./static/img/selfie/me.png"
+                    ></n-avatar>
+                  </template>
+                  INFJ📗
+                </n-popover>
+                
+              </div>  
+
+              <div id="info-container">
+                  <n-h2>许祖耀</n-h2>
+                  <div>
+                    <n-tag> 中国石油大学（华东） </n-tag>
+                    <n-tag> 计算机科学与技术专业 </n-tag>
                   </div>
-                  <el-carousel
-                    style="
-                      height: 530px;
-                      box-shadow: 0 0 8px var(--secondary-color);
-                      border-radius: 6px;
-                      border: var(--secondary-color) 2px solid;
-                    "
-                    motion-blur
-                  >
-                    <el-carousel-item style="height: auto">
-                      <img
-                        src="static/img/selfie/1.jpg"
-                        style="width: 100%; height: auto"
-                        alt="selfie"
-                      />
-                    </el-carousel-item>
-                    <el-carousel-item style="height: auto">
-                      <img
-                        src="static/img/selfie/2.jpg"
-                        style="width: 100%; height: auto"
-                        alt="selfie"
-                      />
-                    </el-carousel-item>
-                    <el-carousel-item style="height: auto">
-                      <img
-                        src="static/img/selfie/3.jpg"
-                        style="width: 100%; height: auto"
-                        alt="selfie"
-                      />
-                    </el-carousel-item>
-                    <el-carousel-item style="height: auto">
-                      <img
-                        src="static/img/selfie/4.jpg"
-                        style="width: 100%; height: auto"
-                        alt="selfie"
-                      />
-                    </el-carousel-item>
-                  </el-carousel>
-                  <div style="margin: 32px 4px 8px 4px" class="flex-container">
-                    <el-divider>
-                      <h2
-                        style="
-                          text-align: left;
-                          color: #27496d;
-                          font-size: 24px;
-                          white-space: nowrap;
-                        "
-                      >
-                        🌟追求：能力、想法、热情
-                      </h2>
-                    </el-divider>
-                  </div>
+                
+                <div>
+                  <n-tag> 2021级本科生 | 本科三年级 </n-tag>
                 </div>
-                <div class="card" style="flex: 3 0 800px; height: auto">
-                  <el-tabs
-                    v-model="secActiveTabs"
-                    type="border-card"
-                    style="height: 100%"
-                  >
-                    <el-tab-pane
-                      label="获奖经历"
-                      name="first"
-                      style="text-align: left"
-                    >
-                      <n-config-provider :theme="darkTheme">
-                      </n-config-provider>
-                      <n-h6 prefix="bar" :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'" v-for="award in awardsData">
-                        <n-tag :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'" round> {{award.rank}} </n-tag>
-                        <n-text type="primary">
-                          、
-                          <n-dropdown
-                            trigger="hover"
-                            :options="options"
-                            @select="handleSelect"
+                <div>
+                  <n-tag>现在正全力准备推荐免试研究生🔭</n-tag>
+                </div>
+              </div>
+
+              <div id="link-container">
+                <a href="https://github.com/TochusC" style="margin: 0 8px 0 8px">
+                  <img
+                    class="scale-up-on-hover"
+                    src="static/img/icon/light/github.png"
+                    style="width: auto; height: 44px"
+                  />
+                </a>
+                <a href="https://space.bilibili.com/10478211/" style="margin: 0 8px 0 8px">
+                  <img
+                    class="scale-up-on-hover"
+                    src="static/img/icon/light/bilibili.png"
+                    style="width: auto; height: 48px"
+                  />
+                </a>
+                <a href="./cv.pdf" style="margin: 0 8px 0 8px">
+                  <n-button type="primary">下载简历</n-button>
+                </a>
+              </div>
+
+            </div>
+            <div id="right-container">
+              <n-card>
+                <n-tabs type="line" animated>
+                  <n-tab-pane name="awards" tab="获奖情况">
+                    <n-h6 prefix="bar" :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'" v-for="award in awardsData">
+                      <n-tag :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'" round> {{award.rank}} </n-tag>
+                      <n-text type="primary">
+                        、
+                        <n-dropdown
+                          trigger="hover"
+                          :options="options"
+                          @select="handleSelect"
+                        >
+                          <n-a
+                            v-if="award.projectLink !== null"
+                            :href="award.projectLink"
                           >
-                            <n-a
-                              v-if="award.projectLink !== null"
-                              :href="award.projectLink"
-                            >
-                              {{award.name}}
-                            </n-a>
-                            <p v-else>
-                              {{award.name}}
-                            </p>
-                          </n-dropdown>
-                          、
-                          <n-a 
-                            v-if="award.competitionLink !== null"
-                            :href="award.competitionLink"
-                          >
-                            {{award.competition}}
+                            {{award.name}}
                           </n-a>
-                          <p
-                            v-else
-                          >
-                            {{award.competition}}
+                          <p v-else>
+                            {{award.name}}
                           </p>
-                            、{{award.date}}
-                        </n-text>
-                      </n-h6>
-
-
-                    </el-tab-pane>
-                    <el-tab-pane label="简历" name="second">
-                      <embed
-                        src="./cv.pdf"
-                        width="100%"
-                        height="840px"
-                        type="application/pdf"
+                        </n-dropdown>
+                        、
+                        <n-a 
+                          v-if="award.competitionLink !== null"
+                          :href="award.competitionLink"
+                        >
+                          {{award.competition}}
+                        </n-a>
+                        <p
+                          v-else
+                        >
+                          {{award.competition}}
+                        </p>
+                          、{{award.date}}
+                      </n-text>
+                    </n-h6>
+                  </n-tab-pane>
+                  <n-tab-pane tab="简历" name="resume">
+                    <embed
+                      src="./cv.pdf"
+                      width="100%"
+                      height="840px"
+                      type="application/pdf"
+                    />
+                  </n-tab-pane>
+                  <n-tab-pane tab="Motto" name="motto">
+                    <n-scrollbar>
+                      <img
+                        src="static/img/motto.png"
+                        style="width: 100%; height: auto"
+                        alt="motto"
                       />
-                    </el-tab-pane>
-                    <el-tab-pane label="Motto" name="third">
-                      <el-scrollbar>
-                        <img
-                          src="static/img/motto.png"
-                          style="width: 100%; height: auto"
-                          alt="motto"
-                        />
-                        <n-text>
-                          "Per aspera ad astra", from Finland in the Nineteenth
-                          Century, 1894
-                        </n-text>
-                      </el-scrollbar>
-                    </el-tab-pane>
-                  </el-tabs>
-                </div>
+                      <n-text>
+                        "Per aspera ad astra", from Finland in the Nineteenth
+                        Century, 1894
+                      </n-text>
+                    </n-scrollbar>
+                  </n-tab-pane>
+                </n-tabs>
+              </n-card>
+            </div>
+          </div>
+          <n-card>
+            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+              <n-text type="primary" style="font-size: 16px;">
+                我们在田野上面找猪<br>
+                想象中已找到了三只<br>
+                小鸟在白云上面追逐<br>
+                它们在树底下跳舞<br>
+                啦啦啦啦啦啦啦啦咧<br>
+                啦啦啦啦咧<br>
+                我们在想象中度过了许多年<br>
+                想象中我们是如此的疯狂<br>
+                我们在城市里面找猪<br>
+                想象中已找到了几百万只<br>
+                小鸟在公园里面唱歌<br>
+                它们独自在想象里跳舞<br>
+                啦啦啦啦啦啦啦啦咧<br>
+                啦啦啦啦咧<br>
+                我们在想象中度过了许多年<br>
+                许多年之后我们又开始想象<br>
+                啦啦啦啦啦啦啦啦咧
+              </n-text>
               </div>
-            </el-tab-pane>
-            <el-tab-pane label="项目介绍" name="second">
-              <div class="card">
-                <n-result
-                  status="418"
-                  title="仍在施工中..."
-                  description="一切尽在不言中"
-                >
-                  <template #footer>
-                    <n-button>接受真相就是这么简单</n-button>
-                  </template>
-                  <template #icon>
-                    <div style="font-size: 128px">🛠️</div>
-                  </template>
-                </n-result>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="个人陈述" name="third">
-              <div class="card">
-                <n-result
-                  status="418"
-                  title="仍在施工中..."
-                  description="一切尽在不言中"
-                >
-                  <template #footer>
-                    <n-button>接受真相就是这么简单</n-button>
-                  </template>
-                  <template #icon>
-                    <div style="font-size: 128px">🛠️</div>
-                  </template>
-                </n-result>
-              </div>
-            </el-tab-pane>
-            <el-tab-pane label="更多" name="fourth">
-              <div class="card">
-                <n-result
-                  status="418"
-                  title="仍在施工中..."
-                  description="一切尽在不言中"
-                >
-                  <template #footer>
-                    <n-button>接受真相就是这么简单</n-button>
-                  </template>
-                  <template #icon>
-                    <div style="font-size: 128px">🛠️</div>
-                  </template>
-                </n-result>
-              </div>
-            </el-tab-pane>
-          </el-tabs>
-        </el-main>
-      </el-container>
-      <el-backtop :right="100" :bottom="100" />
+          </n-card>
+        </n-scrollbar>
+      </div>
     </div>
-
+    
     <script>
       const { createApp, ref } = Vue;
-      const { darkTheme } = naive;
       const App = {
         setup() {
-          const message = ref("Hello vue!");
-          const activeTabs = ref("first");
-          const secActiveTabs = ref("first");
           const awardsData = awards;
           return {
             awardsData,
-            darkTheme,
-            message,
-            activeTabs,
-            secActiveTabs,
           };
         },
       };
       const app = createApp(App);
-      app.use(ElementPlus);
       app.use(naive);
       app.mount("#app");
     </script>
   </body>
+
 </html>
 
 <style>
-  :root {
-    --white: #efefef;
-    --primary-color: #27496d;
-    --secondary-color: #8080ff;
-    --black: #1e1e1e;
-    --n-text-color-primary: #e5eaf3;
-    --n-text-color-regular: #cfd3dc;
-    --n-text-color-secondary: #a3a6ad;
-    --n-text-color-placeholder: #8d9095;
-    --n-text-color-disabled: #6c6e72;
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  #header-container {
+    padding: 6px 8px 6px 8px;
+    border: #8080ff 2px solid;
+    display: flex;
+    height: 5vh;
+    align-items: center;
   }
 
-  p{
-    display: inline;
+  #body-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  #profile-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #left-container {
+    flex: 1 0 360px;
+    display: flex;
+    height: 93vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: ease-in-out 0.5s;
+  }
+  #right-container {
+    flex: 3 0 600px;
+    transition: ease-in-out 0.5s;
+  }
+
+  #info-container {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  #link-container {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
+  .scale-up-on-hover:hover {
+    transition: 200ms;
+    transform: scale(1.1);
+  }
+
+  .content-divider {
+    margin: 32px 0 32px 0;
+  }
 </style>
