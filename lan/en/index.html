@@ -8,22 +8,23 @@
     <!-- import JavaScript -->
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/naive-ui"></script>
-    <script src="static/js/data.js"></script>
+    <script src="../../static/js/data.en.js"></script>
 
-    <title>许祖耀 | XU ZUYAO | 大四 | 👋</title>
+    <title>ZUYAO XU | Senior | 👋</title>
   </head>
 
   <body>
     <div id="app">
       <div id="header-container">
         <n-h1 prefix="bar" style="margin: 0; font-size: 28px">
-          <n-text type="primary"> 许祖耀 | XU ZUYAO </n-text>
+          <n-text type="primary"> ZUYAO XU </n-text>
         </n-h1>
+
         <div>
           <n-h3 style="margin: 0">
-            <n-a type="primary" href="index.html"> 简体中文 </n-a>
+            <n-a type="primary" href="../../index.html"> 简体中文 </n-a>
             |
-            <n-a type="primary" href="lan/en/index.html"> ENGLISH </n-a>
+            <n-a type="primary" href="index.html"> ENGLISH </n-a>
           </n-h3>
         </div>
       </div>
@@ -37,7 +38,7 @@
                     <n-avatar
                       round
                       :size="256"
-                      src="./static/img/selfie/me.png"
+                      src="../../static/img/selfie/me.png"
                     ></n-avatar>
                   </template>
                   INFJ📗
@@ -45,19 +46,19 @@
               </div>
 
               <div id="info-container">
-                <n-h2>许祖耀</n-h2>
+                <n-h2>ZUYAO XU</n-h2>
                 <div align="center" />
-                <p>早八晚十，状态稳定✨</p>
-                🌱 在努力学习 "
+                <p>Early bird, stable state✨</p>
+                🌱 Currently learning "
                 <n-a href="https://en.wikipedia.org/wiki/Domain_Name_System"
-                  >DNS安全 </n-a
+                  >DNS Security </n-a
                 >"
               </div>
               <table>
                 <tr>
                   <td>
                     <n-a href="https://www.upc.edu.cn/">
-                      <img src="static/img/UPC.gif" width="96" />
+                      <img src="../../static/img/UPC.gif" width="96" />
                     </n-a>
                   </td>
                   <td>
@@ -71,11 +72,13 @@
                     >
                       <n-h6 prefix="bar">
                         <div>
-                          <n-tag> 中国石油大学（华东） </n-tag>
-                          <n-tag> 计算机科学与技术专业 </n-tag>
+                          <n-tag>
+                            China University of Petroleum (East China)
+                          </n-tag>
+                          <n-tag> Computer Science and Technology </n-tag>
                         </div>
                         <div>
-                          <n-tag> 2021级本科生 | 本科四年级 </n-tag>
+                          <n-tag> Undergraduate Student, Class of 2021 </n-tag>
                         </div>
                       </n-h6>
                     </div>
@@ -85,7 +88,7 @@
                 <tr>
                   <td>
                     <n-a href="https://www.nankai.edu.cn/">
-                      <img src="static/img/NKU.png" width="92" />
+                      <img src="../../static/img/NKU.png" width="92" />
                     </n-a>
                   </td>
                   <td>
@@ -99,14 +102,16 @@
                     >
                       <n-h6 prefix="bar">
                         <div>
-                          <n-tag> 南开大学 </n-tag>
-                          <n-tag> 网络空间安全专业 </n-tag>
+                          <n-tag> Nankai University </n-tag>
+                          <n-tag> Cyberspace Security </n-tag>
                         </div>
                         <div>
-                          <n-tag> 2025级研究生（预录取） </n-tag>
                           <n-tag>
-                            导师:
-                            <n-a href="https://lixiang521.com/"> 李想 </n-a>
+                            Graduate Student, Class of 2025 (Pre-admitted)
+                          </n-tag>
+                          <n-tag>
+                            Advisor:
+                            <n-a href="https://lixiang521.com/"> Xiang Li </n-a>
                           </n-tag>
                         </div>
                       </n-h6>
@@ -126,7 +131,7 @@
             <div align="center">
               <n-a href="https://github.com/tochusc"
                 ><img
-                  src="https://img.shields.io/badge/-Github主页-8080ff?style=flat-square&logo=github&logoColor=white&link=https://tochusc.github.io/"
+                  src="https://img.shields.io/badge/-Github Profile-8080ff?style=flat-square&logo=github&logoColor=white&link=https://tochusc.github.io/"
               /></n-a>
               <n-a href="mailto:tochsus@163.com"
                 ><img
@@ -145,14 +150,14 @@
           <div id="right-container">
             <n-card>
               <n-tabs type="line" animated>
-                <n-tab-pane name="awards" tab="获奖情况">
+                <n-tab-pane name="awards" tab="Awards">
                   <n-h6
                     v-for="award in awardsData"
                     prefix="bar"
-                    :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'"
+                    :type="award.tier === 'National' ? 'warning' : award.tier === 'Provincial' ? 'info' : 'success'"
                   >
                     <n-tag
-                      :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'"
+                      :type="award.tier === 'National' ? 'warning' : award.tier === 'Provincial' ? 'info' : 'success'"
                       round
                     >
                       {{award.rank}}
@@ -181,16 +186,16 @@
                   </n-h6>
                 </n-tab-pane>
 
-                <n-tab-pane tab="近期动态" name="rencentNews">
+                <n-tab-pane tab="Recent News" name="recentNews">
                   <n-h6
                     v-for="recentNew in recentNews"
                     prefix="bar"
                     :type="recentNew.tag === 'gold' ? 'warning' : 
-                    recentNew.tag === 'blue' ? 'info' : 'success'"
+                                        recentNew.tag === 'blue' ? 'info' : 'success'"
                   >
                     <n-tag
                       :type="recentNew.tag === 'gold' ? 'warning' 
-                      : recentNew.tag === 'blue' ? 'info' : 'success'"
+                                            : recentNew.tag === 'blue' ? 'info' : 'success'"
                       round
                     >
                       {{recentNew.date}}
@@ -218,9 +223,9 @@
                   </n-h6>
                 </n-tab-pane>
 
-                <n-tab-pane tab="简历" name="resume">
+                <n-tab-pane tab="Resume" name="resume">
                   <embed
-                    src="./cv.pdf"
+                    src="../../cv.pdf"
                     width="100%"
                     height="840px"
                     type="application/pdf"
@@ -249,18 +254,16 @@
                 width: 100%;
                 height: 100%;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
               "
             >
-              <div algin="center">
-                <n-h6 prefix="bar">
-                  生活不止眼前的代码，还有诗和南门外的海与远方🌈</n-h6
-                >
-                <img
-                  src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif"
-                />
-              </div>
+              <n-h6 prefix="bar">
+                Life is not just about the code in front of you, but also poetry
+                and the sea and the distance outside the South Gate🌈</n-h6
+              >
+              <img src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif" />
             </div>
           </n-card>
         </n-scrollbar>
