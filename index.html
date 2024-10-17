@@ -42,39 +42,74 @@
 
               <div id="info-container">
                   <n-h2>许祖耀</n-h2>
-                  <div>
-                    <n-tag> 中国石油大学（华东） </n-tag>
-                    <n-tag> 计算机科学与技术专业 </n-tag>
+                  <div align="center" />
+                  <p>
+                  早八晚十，状态稳定✨
+                  </p>
+                  🌱 在努力学习 "<n-a href ="https://en.wikipedia.org/wiki/Domain_Name_System">DNS安全</n-a>"
                   </div>
-                
-                <div>
-                  <n-tag> 2021级本科生 | 本科四年级 </n-tag>
-                </div>
-                <div>
-                  <n-tag>现在正全力准备推荐免试研究生🔭</n-tag>
-                </div>
+
+                <table>
+                  <tr>
+                    <td>
+                      <img src="static/img/UPC.gif" width="96">
+                    </td>
+                    <td>
+                      <div class="flex-container" 
+                      style="
+                        flex-direction: column;
+                        margin-top: 12px;
+                        margin-left: 12px;
+                      ">
+                        <n-h6 prefix="bar">
+                        <div>
+                          <n-tag> 中国石油大学（华东） </n-tag>
+                          <n-tag> 计算机科学与技术专业 </n-tag>
+                        </div>
+                        <div>
+                          <n-tag> 2021级本科生 | 本科四年级 </n-tag>
+                        </div>
+                      </n-h6>
+                      </div>  
+                    </td>
+                  </tr>
+                  <br/>
+                  <tr>
+                    <td>
+                      <img src="static/img/NKU.png" width="92">
+                    </td>
+                    <td>
+                      <div class="flex-container" 
+                      style="
+                        flex-direction: column;
+                        margin-top: 12px;
+                        margin-left: 12px;
+                      ">
+                        <n-h6 prefix="bar">
+                        <div>
+                          <n-tag> 南开大学 </n-tag>
+                          <n-tag> 网络空间安全专业 </n-tag>
+                        </div>
+                        <div>
+                          <n-tag> 2025级研究生（预录取） </n-tag>
+                          <n-tag> 导师:
+                            <n-a href="https://lixiang521.com/">
+                              李想 
+                            </n-a>
+                          </n-tag>
+                        </div>
+                      </n-h6>
+                      </div>  
+                    </td>
+                  </tr>
+                </table>
               </div>
 
               <div id="link-container">
-                <a href="https://github.com/TochusC" style="margin: 0 8px 0 8px">
-                  <img
-                    class="scale-up-on-hover"
-                    src="static/img/icon/light/github.png"
-                    style="width: auto; height: 44px"
-                  />
-                </a>
-                <a href="https://space.bilibili.com/10478211/" style="margin: 0 8px 0 8px">
-                  <img
-                    class="scale-up-on-hover"
-                    src="static/img/icon/light/bilibili.png"
-                    style="width: auto; height: 48px"
-                  />
-                </a>
-                <a href="./cv.pdf" style="margin: 0 8px 0 8px">
-                  <n-button type="primary">下载简历</n-button>
-                </a>
-              </div>
+                  
 
+              </div>
+              
             </div>
             <div id="right-container">
               <n-card>
@@ -139,29 +174,13 @@
                 </n-tabs>
               </n-card>
             </div>
-          </div>
           <n-card>
             <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-              <n-text type="primary" style="font-size: 16px;">
-                我们在田野上面找猪<br>
-                想象中已找到了三只<br>
-                小鸟在白云上面追逐<br>
-                它们在树底下跳舞<br>
-                啦啦啦啦啦啦啦啦咧<br>
-                啦啦啦啦咧<br>
-                我们在想象中度过了许多年<br>
-                想象中我们是如此的疯狂<br>
-                我们在城市里面找猪<br>
-                想象中已找到了几百万只<br>
-                小鸟在公园里面唱歌<br>
-                它们独自在想象里跳舞<br>
-                啦啦啦啦啦啦啦啦咧<br>
-                啦啦啦啦咧<br>
-                我们在想象中度过了许多年<br>
-                许多年之后我们又开始想象<br>
-                啦啦啦啦啦啦啦啦咧
-              </n-text>
+              <div algin="center">
+                <n-h6 prefix="bar"> 生活不止眼前的代码，还有诗和南门外的海与远方🌈</n-h6>
+                <img src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif"/>
               </div>
+            </div>
           </n-card>
         </n-scrollbar>
       </div>
@@ -230,6 +249,11 @@
     justify-content: center;
     align-items: center;
   }
+
+  .flex-container {
+    display: flex;
+  }
+
 
 
   #link-container {
