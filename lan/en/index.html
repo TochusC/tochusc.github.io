@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="./static/img/selfie/me.png" type="image/x-icon" />
+    <link rel="icon" href="../../static/img/selfie/me.png" type="image/x-icon" />
 
     <!-- import JavaScript -->
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/naive-ui"></script>
-    <script src="../../static/js/data.en.js"></script>
+    <script src="../..//static/js/data.en.js"></script>
 
     <title>ZUYAO XU | Senior | 👋</title>
   </head>
@@ -29,7 +29,6 @@
         </div>
       </div>
       <div id="body-container">
-        <n-scrollbar style="max-height: 93vh">
           <div id="profile-container">
             <div id="left-container">
               <div id="selfie-container">
@@ -148,6 +147,7 @@
             </div>
           </div>
           <div id="right-container">
+            <n-scrollbar>
             <n-card>
               <n-tabs type="line" animated>
                 <n-tab-pane name="awards" tab="Awards">
@@ -247,28 +247,28 @@
                 </n-tab-pane>
               </n-tabs>
             </n-card>
+          </n-scrollbar>
           </div>
-          <n-card>
-            <div
-              style="
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <n-h6 prefix="bar">
-                Life is not just about the code in front of you, but also poetry
-                and the sea and the distance outside the South Gate🌈</n-h6
-              >
-              <img src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif" />
-            </div>
-          </n-card>
-        </n-scrollbar>
       </div>
     </div>
+    <n-card>
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <n-h6 prefix="bar">
+          Life is not just about the code in front of you, but also poetry
+          and the sea and the distance outside the South Gate🌈</n-h6
+        >
+        <img src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif" />
+      </div>
+    </n-card>
 
     <script>
       const { createApp, ref } = Vue;

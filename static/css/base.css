@@ -1,27 +1,10 @@
-﻿:root {
-    --white: #efefef;
-    --primary-color: #27496d;
-    --secondary-color: #8080ff;
-    --black: #1e1e1e;
-    --el-text-color-primary:#E5EAF3;
-    --el-text-color-regular:#CFD3DC;
-    --el-text-color-secondary:#A3A6AD;
-    --el-text-color-placeholder:#8D9095;
-    --el-text-color-disabled:#6C6E72;
-}
-
-html{
-    background: #efefef;
-    margin: 0;
-    padding: 0;
+﻿html{
+    height: 100%;
+    width: 100%;
 }
 body{
     margin: 0;
     padding: 0;
-}
-.primary{
-    color: var(--primary-color);
-}
-.black{
-    color: #1e1e1e;
+    height: 100vh;
+    width: 100%;
 }

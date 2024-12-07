@@ -10,27 +10,32 @@
     <script src="https://unpkg.com/naive-ui"></script>
     <script src="static/js/data.js"></script>
 
-    <title>许祖耀 | XU ZUYAO | 大四 | 👋</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
   </head>
 
   <body>
     <div id="app">
+      <title>{{ websiteTitle }}</title>
       <div id="header-container">
-        <n-h1 prefix="bar" style="margin: 0; font-size: 28px">
-          <n-text type="primary"> 许祖耀 </n-text>
-        </n-h1>
-        <div>
-          <n-h3 style="margin: 0">
-            <n-a type="primary" href="index.html"> 简体中文 </n-a>
-            |
-            <n-a type="primary" href="lan/en/index.html"> ENGLISH </n-a>
-          </n-h3>
+        <div id="header">
+          <n-h1 prefix="bar" id="my-name">
+            <n-text type="primary"> 许祖耀 </n-text>
+          </n-h1>
+          <div>
+            <n-h3 id="language">
+              <n-a type="primary" href="index.html"> 简体中文 </n-a>
+              |
+              <n-a type="primary" href="lan/en/index.html"> ENGLISH </n-a>
+            </n-h3>
+          </div>
         </div>
       </div>
       <div id="body-container">
-        <n-scrollbar style="max-height: 93vh">
-          <div id="profile-container">
-            <div id="left-container">
+        <div id="profile-container">
+          <div id="left-container">
+            <div id="intro-container">
               <div id="selfie-container">
                 <n-popover trigger="hover" placement="right">
                   <template #trigger>
@@ -46,106 +51,95 @@
 
               <div id="info-container">
                 <n-h2>许祖耀</n-h2>
-                <div align="center" />
-                <p>早八晚十，状态稳定✨</p>
-                🌱 在努力学习 "
-                <n-a href="https://en.wikipedia.org/wiki/Domain_Name_System"
-                  >DNS安全 </n-a
-                >"
+                <div align="center">
+                  <p>早八晚十，状态稳定✨</p>
+                  <p>🌱 在努力学习"DNS安全协议扩展（DNSSEC）"</p>
+                </div>
               </div>
-              <table>
-                <tr>
-                  <td>
-                    <n-a href="https://www.upc.edu.cn/">
-                      <img src="static/img/UPC.gif" width="96" />
-                    </n-a>
-                  </td>
-                  <td>
-                    <div
-                      class="flex-container"
-                      style="
-                        flex-direction: column;
-                        margin-top: 12px;
-                        margin-left: 12px;
-                      "
-                    >
-                      <n-h6 prefix="bar">
-                        <div>
-                          <n-tag> 中国石油大学（华东） </n-tag>
-                          <n-tag> 计算机科学与技术专业 </n-tag>
-                        </div>
-                        <div>
-                          <n-tag> 2021级本科生 | 本科四年级 </n-tag>
-                        </div>
-                      </n-h6>
-                    </div>
-                  </td>
-                </tr>
-                <br />
-                <tr>
-                  <td>
-                    <n-a href="https://www.nankai.edu.cn/">
-                      <img src="static/img/NKU.png" width="92" />
-                    </n-a>
-                  </td>
-                  <td>
-                    <div
-                      class="flex-container"
-                      style="
-                        flex-direction: column;
-                        margin-top: 12px;
-                        margin-left: 12px;
-                      "
-                    >
-                      <n-h6 prefix="bar">
-                        <div>
-                          <n-tag> 南开大学 </n-tag>
-                          <n-tag> 网络空间安全专业 </n-tag>
-                        </div>
-                        <div>
-                          <n-tag> 2025级研究生（预录取） </n-tag>
-                          <n-tag>
-                            导师:
-                            <n-a href="https://lixiang521.com/"> 李想 </n-a>
-                          </n-tag>
-                        </div>
-                      </n-h6>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            </div>
 
-            <h2 align="center">
-              Reach me on
-              <img
-                src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif"
-                width="50"
-              />
-            </h2>
-            <div align="center">
-              <n-a href="https://github.com/tochusc"
-                ><img
-                  src="https://img.shields.io/badge/-Github主页-8080ff?style=flat-square&logo=github&logoColor=white&link=https://tochusc.github.io/"
-              /></n-a>
-              <n-a href="mailto:tochsus@163.com"
-                ><img
-                  src="https://img.shields.io/badge/-Email:4spera-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tochsus@163.com"
-              /></n-a>
-              <n-a href="https://x.com/xu_zu_yao"
-                ><img
-                  src="https://img.shields.io/badge/-4stra-grey?style=flat-square&logo=x&logoColor=white&link=https://x.com/xu_zu_yao"
-              /></n-a>
-              <n-a href="https://space.bilibili.com/10478211"
-                ><img
-                  src="https://img.shields.io/badge/-小鱼小鱼快快游02-blue?style=flat-square&logo=bilibili&logoColor=white&link=https://space.bilibili.com/10478211"
-              /></n-a>
+              <div id="info-table">
+                <table>
+                  <tr>
+                    <td>
+                      <n-a href="https://www.upc.edu.cn/">
+                        <img src="static/img/UPC.gif" width="96" />
+                      </n-a>
+                    </td>
+                    <td>
+                      <div class="school-container">
+                        <n-h6 prefix="bar">
+                          <div>
+                            <n-tag> 中国石油大学（华东） </n-tag>
+                            <n-tag> 计算机科学与技术专业 </n-tag>
+                          </div>
+                          <div>
+                            <n-tag> 2021级本科生 | 本科四年级 </n-tag>
+                          </div>
+                        </n-h6>
+                      </div>
+                    </td>
+                  </tr>
+                  <br />
+                  <tr>
+                    <td>
+                      <n-a href="https://www.nankai.edu.cn/">
+                        <img src="static/img/NKU.png" width="92" />
+                      </n-a>
+                    </td>
+                    <td>
+                      <div class="school-container">
+                        <n-h6 prefix="bar">
+                          <div>
+                            <n-tag> 南开大学 </n-tag>
+                            <n-tag> 网络空间安全专业 </n-tag>
+                          </div>
+                          <div>
+                            <n-tag> 2025级研究生（预录取） </n-tag>
+                            <n-tag>
+                              导师:
+                              <n-a href="https://lixiang521.com/"> 李想 </n-a>
+                            </n-tag>
+                          </div>
+                        </n-h6>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div id="reach-me">
+                <h2 align="center">
+                  Reach me on
+                  <img
+                    src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif"
+                    width="50"
+                  />
+                </h2>
+
+                <div align="center">
+                  <n-a href="https://github.com/tochusc"
+                    ><img
+                      src="https://img.shields.io/badge/-Github主页-8080ff?style=flat-square&logo=github&logoColor=white&link=https://tochusc.github.io/"
+                  /></n-a>
+                  <n-a href="mailto:tochsus@163.com"
+                    ><img
+                      src="https://img.shields.io/badge/-Email:4spera-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tochsus@163.com"
+                  /></n-a>
+                  <n-a href="https://x.com/xu_zu_yao"
+                    ><img
+                      src="https://img.shields.io/badge/-4stra-grey?style=flat-square&logo=x&logoColor=white&link=https://x.com/xu_zu_yao"
+                  /></n-a>
+                  <n-a href="https://space.bilibili.com/10478211"
+                    ><img
+                      src="https://img.shields.io/badge/-小鱼小鱼快快游02-blue?style=flat-square&logo=bilibili&logoColor=white&link=https://space.bilibili.com/10478211"
+                  /></n-a>
+                </div>
+              </div>
             </div>
-          </div>
+          </div>  
           <div id="right-container">
-            <n-card>
-              <n-tabs type="line" animated>
-                <n-tab-pane name="awards" tab="获奖情况">
+            <n-scrollbar style="width: 100%; height: 100%;">
+            <n-tabs style="width: 100%; height: 100%;" type="line" animated>
+              <n-tab-pane style="width: 100%; height: 100%;" name="awards" tab="获奖情况">
                   <n-h6
                     v-for="award in awardsData"
                     prefix="bar"
@@ -179,103 +173,104 @@
                       、{{award.date}}
                     </n-text>
                   </n-h6>
-                </n-tab-pane>
+              </n-tab-pane>
 
-                <n-tab-pane tab="近期动态" name="rencentNews">
-                  <n-h6
-                    v-for="recentNew in recentNews"
-                    prefix="bar"
-                    :type="recentNew.tag === 'gold' ? 'warning' : 
-                    recentNew.tag === 'blue' ? 'info' : 'success'"
-                  >
-                    <n-tag
-                      :type="recentNew.tag === 'gold' ? 'warning' 
-                      : recentNew.tag === 'blue' ? 'info' : 'success'"
-                      round
-                    >
-                      {{recentNew.date}}
-                    </n-tag>
-                    <n-text type="primary">
-                      、
-                      <n-dropdown trigger="hover">
-                        <n-a
-                          v-if="recentNew.titleLink !== null"
-                          :href="recentNew.titleLink"
-                        >
-                          {{recentNew.title}}
-                        </n-a>
-                        <p v-else>{{recentNew.title}}</p>
-                      </n-dropdown>
-                      、
-                      <n-a
-                        v-if="recentNew.descriptionLink !== null"
-                        :href="recentNew.descriptionLink"
-                      >
-                        {{recentNew.description}}
-                      </n-a>
-                      <p v-else>{{recentNew.description}}</p>
-                    </n-text>
-                  </n-h6>
-                </n-tab-pane>
-
-                <n-tab-pane tab="简历" name="resume">
-                  <embed
-                    src="./cv.pdf"
-                    width="100%"
-                    height="840px"
-                    type="application/pdf"
-                  />
-                </n-tab-pane>
-
-                <n-tab-pane tab="Motto" name="motto">
-                  <n-scrollbar>
-                    <img
-                      src="static/img/motto.png"
-                      style="width: 100%; height: auto"
-                      alt="motto"
-                    />
-                    <n-text>
-                      "Per aspera ad astra", from Finland in the Nineteenth
-                      Century, 1894
-                    </n-text>
-                  </n-scrollbar>
-                </n-tab-pane>
-              </n-tabs>
-            </n-card>
-          </div>
-          <n-card>
-            <div
-              style="
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <div algin="center">
-                <n-h6 prefix="bar">
-                  生活不止眼前的代码，还有诗和南门外的海与远方🌈</n-h6
+              <n-tab-pane tab="近期动态" name="rencentNews">
+                <n-h6
+                  v-for="recentNew in recentNews"
+                  prefix="bar"
+                  :type="recentNew.tag === 'gold' ? 'warning' : 
+                  recentNew.tag === 'blue' ? 'info' : 'success'"
                 >
-                <img
-                  src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif"
+                  <n-tag
+                    :type="recentNew.tag === 'gold' ? 'warning' 
+                    : recentNew.tag === 'blue' ? 'info' : 'success'"
+                    round
+                  >
+                    {{recentNew.date}}
+                  </n-tag>
+                  <n-text type="primary">
+                    、
+                    <n-dropdown trigger="hover">
+                      <n-a
+                        v-if="recentNew.titleLink !== null"
+                        :href="recentNew.titleLink"
+                      >
+                        {{recentNew.title}}
+                      </n-a>
+                      <p v-else>{{recentNew.title}}</p>
+                    </n-dropdown>
+                    、
+                    <n-a
+                      v-if="recentNew.descriptionLink !== null"
+                      :href="recentNew.descriptionLink"
+                    >
+                      {{recentNew.description}}
+                    </n-a>
+                    <p v-else>{{recentNew.description}}</p>
+                  </n-text>
+                </n-h6>
+              </n-tab-pane>
+
+              <n-tab-pane tab="简历" name="resume">
+                <embed
+                  src="./cv.pdf"
+                  width="100%"
+                  height="840px"
+                  type="application/pdf"
                 />
-              </div>
-            </div>
-          </n-card>
-        </n-scrollbar>
+              </n-tab-pane>
+
+              <n-tab-pane tab="Motto" name="motto">
+                <n-scrollbar>
+                  <img
+                    src="static/img/motto.png"
+                    style="width: 100%; height: auto"
+                    alt="motto"
+                  />
+                  <n-text>
+                    "Per aspera ad astra", from Finland in the Nineteenth
+                    Century, 1894
+                  </n-text>
+                </n-scrollbar>
+              </n-tab-pane>
+            </n-tabs>
+            <!-- <div id="footer">
+              <n-card>
+                <div
+                  style="
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <div algin="center">
+                    <n-h6 prefix="bar">
+                      生活不止眼前的代码，还有诗和南门外的海与远方🌈</n-h6
+                    >
+                    <img
+                      src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif"
+                    />
+                  </div>
+                </div>
+              </n-scrollbar>
+            </div> -->
+          </div>
+        </div>
       </div>
     </div>
-
     <script>
       const { createApp, ref } = Vue;
       const App = {
         setup() {
           const awardsData = awards;
           const recentNews = news;
+          const websiteTitle = website_title;
           return {
             awardsData,
             recentNews,
+            websiteTitle,
           };
         },
       };
@@ -285,58 +280,3 @@
     </script>
   </body>
 </html>
-
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  #header-container {
-    padding: 6px 8px 6px 8px;
-    border: #8080ff 2px solid;
-    display: flex;
-    height: 5vh;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  #body-container {
-    height: 100%;
-    width: 100%;
-  }
-
-  #profile-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  #left-container {
-    flex: 1 0 360px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    transition: ease-in-out 0.5s;
-  }
-  #right-container {
-    flex: 3 0 600px;
-    transition: ease-in-out 0.5s;
-  }
-
-  #info-container {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .flex-container {
-    display: flex;
-  }
-
-  .content-divider {
-    margin: 32px 0 32px 0;
-  }
-</style>
