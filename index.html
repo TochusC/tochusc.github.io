@@ -8,7 +8,7 @@
     <!-- import JavaScript -->
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/naive-ui"></script>
-    <script src="static/js/data.js"></script>
+    <script src="static/js/text.js"></script>
 
     <!-- import CSS -->
     <link rel="stylesheet" href="static/css/styles.css">
@@ -17,17 +17,23 @@
 
   <body>
     <div id="app">
-      <title>{{ websiteTitle }}</title>
+      <title>{{ lan.name }} | {{lan.school}} | {{lan.major}} | {{lan.status}}</title>
       <div id="header-container">
         <div id="header">
           <n-h1 prefix="bar" id="my-name">
-            <n-text type="primary"> 许祖耀 </n-text>
+            <n-text type="primary"> {{lan.name}} </n-text>
           </n-h1>
           <div>
             <n-h3 id="language">
-              <n-a type="primary" href="index.html"> 简体中文 </n-a>
+              <n-a type="primary" 
+                @click="changeLanguage('en')"> 
+                ENGLISH 
+              </n-a>
               |
-              <n-a type="primary" href="lan/en/index.html"> ENGLISH </n-a>
+              <n-a type="primary" 
+                @click="changeLanguage('ch')"> 
+                简体中文 
+              </n-a>
             </n-h3>
           </div>
         </div>
@@ -50,36 +56,11 @@
               </div>
 
               <div id="info-container">
-                <n-h2>许祖耀</n-h2>
-                <div align="center">
-                  <p>早八晚十，状态稳定✨</p>
-                  <p>🌱 在努力学习"DNS安全协议扩展（DNSSEC）"</p>
-                </div>
+                <n-h2>{{lan.name}}</n-h2>
               </div>
 
               <div id="info-table">
                 <table>
-                  <tr>
-                    <td>
-                      <n-a href="https://www.upc.edu.cn/">
-                        <img src="static/img/UPC.gif" width="96" />
-                      </n-a>
-                    </td>
-                    <td>
-                      <div class="school-container">
-                        <n-h6 prefix="bar">
-                          <div>
-                            <n-tag> 中国石油大学（华东） </n-tag>
-                            <n-tag> 计算机科学与技术专业 </n-tag>
-                          </div>
-                          <div>
-                            <n-tag> 2021级本科生 | 本科四年级 </n-tag>
-                          </div>
-                        </n-h6>
-                      </div>
-                    </td>
-                  </tr>
-                  <br />
                   <tr>
                     <td>
                       <n-a href="https://www.nankai.edu.cn/">
@@ -90,15 +71,15 @@
                       <div class="school-container">
                         <n-h6 prefix="bar">
                           <div>
-                            <n-tag> 南开大学 </n-tag>
-                            <n-tag> 网络空间安全专业 </n-tag>
+                            <n-tag> {{lan.status}} </n-tag>
+                            <n-tag>
+                              {{lan.advisor_header}}:
+                              <n-a href="https://lixiang521.com/"> {{lan.advisor}} </n-a>
+                            </n-tag>
                           </div>
                           <div>
-                            <n-tag> 2025级研究生（预录取） </n-tag>
-                            <n-tag>
-                              导师:
-                              <n-a href="https://lixiang521.com/"> 李想 </n-a>
-                            </n-tag>
+                            <n-tag> {{lan.school}} </n-tag>
+                            <n-tag> {{lan.major}} </n-tag>
                           </div>
                         </n-h6>
                       </div>
@@ -114,15 +95,14 @@
                     width="50"
                   />
                 </h2>
-
                 <div align="center">
                   <n-a href="https://github.com/tochusc"
                     ><img
-                      src="https://img.shields.io/badge/-Github主页-8080ff?style=flat-square&logo=github&logoColor=white&link=https://tochusc.github.io/"
+                      src="https://img.shields.io/badge/-Github-8080ff?style=flat-square&logo=github&logoColor=white&link=https://tochusc.github.io/"
                   /></n-a>
                   <n-a href="mailto:tochsus@163.com"
                     ><img
-                      src="https://img.shields.io/badge/-Email:4spera-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tochsus@163.com"
+                      src="https://img.shields.io/badge/-Email-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tochsus@163.com"
                   /></n-a>
                   <n-a href="https://x.com/xu_zu_yao"
                     ><img
@@ -139,20 +119,20 @@
           <div id="right-container">
             <n-scrollbar style="width: 100%; height: 100%;">
             <n-tabs style="width: 100%; height: 100%;" type="line" animated>
-              <n-tab-pane style="width: 100%; height: 100%;" name="awards" tab="获奖情况">
+              <n-tab-pane style="width: 100%; height: 100%;" name="awards" :tab=lan.awards_header>
                   <n-h6
-                    v-for="award in awardsData"
+                    v-for="award in lan.awards"
                     prefix="bar"
-                    :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'"
+                    :type="award.tier === 'national' ? 'warning' : award.tier === 'provincial' ? 'info' : 'success'"
                   >
                     <n-tag
-                      :type="award.tier === '国家级' ? 'warning' : award.tier === '省部级' ? 'info' : 'success'"
+                      :type="award.tier === 'national' ? 'warning' : award.tier === 'provincial' ? 'info' : 'success'"
                       round
                     >
-                      {{award.rank}}
+                    {{award.rank}}
                     </n-tag>
                     <n-text type="primary">
-                      、
+                      , 
                       <n-dropdown trigger="hover">
                         <n-a
                           v-if="award.projectLink !== null"
@@ -162,7 +142,7 @@
                         </n-a>
                         <p v-else>{{award.name}}</p>
                       </n-dropdown>
-                      、
+                      , 
                       <n-a
                         v-if="award.competitionLink !== null"
                         :href="award.competitionLink"
@@ -170,14 +150,13 @@
                         {{award.competition}}
                       </n-a>
                       <p v-else>{{award.competition}}</p>
-                      、{{award.date}}
+                      , {{award.date}}
                     </n-text>
                   </n-h6>
               </n-tab-pane>
-
-              <n-tab-pane tab="近期动态" name="rencentNews">
+              <n-tab-pane name="news" :tab=lan.news_header>
                 <n-h6
-                  v-for="recentNew in recentNews"
+                  v-for="recentNew in lan.news"
                   prefix="bar"
                   :type="recentNew.tag === 'gold' ? 'warning' : 
                   recentNew.tag === 'blue' ? 'info' : 'success'"
@@ -190,7 +169,7 @@
                     {{recentNew.date}}
                   </n-tag>
                   <n-text type="primary">
-                    、
+                    , 
                     <n-dropdown trigger="hover">
                       <n-a
                         v-if="recentNew.titleLink !== null"
@@ -200,7 +179,7 @@
                       </n-a>
                       <p v-else>{{recentNew.title}}</p>
                     </n-dropdown>
-                    、
+                    , 
                     <n-a
                       v-if="recentNew.descriptionLink !== null"
                       :href="recentNew.descriptionLink"
@@ -211,51 +190,7 @@
                   </n-text>
                 </n-h6>
               </n-tab-pane>
-
-              <n-tab-pane tab="简历" name="resume">
-                <embed
-                  src="./cv.pdf"
-                  width="100%"
-                  height="840px"
-                  type="application/pdf"
-                />
-              </n-tab-pane>
-
-              <n-tab-pane tab="Motto" name="motto">
-                <n-scrollbar>
-                  <img
-                    src="static/img/motto.png"
-                    style="width: 100%; height: auto"
-                    alt="motto"
-                  />
-                  <n-text>
-                    "Per aspera ad astra", from Finland in the Nineteenth
-                    Century, 1894
-                  </n-text>
-                </n-scrollbar>
-              </n-tab-pane>
             </n-tabs>
-            <!-- <div id="footer">
-              <n-card>
-                <div
-                  style="
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <div algin="center">
-                    <n-h6 prefix="bar">
-                      生活不止眼前的代码，还有诗和南门外的海与远方🌈</n-h6
-                    >
-                    <img
-                      src="https://media.giphy.com/media/xqklsTVVXhPa/giphy.gif"
-                    />
-                  </div>
-                </div>
-              </n-scrollbar>
-            </div> -->
           </div>
         </div>
       </div>
@@ -264,19 +199,33 @@
       const { createApp, ref } = Vue;
       const App = {
         setup() {
-          const awardsData = awards;
-          const recentNews = news;
-          const websiteTitle = website_title;
+
+          const tex = text;
+          const tex_en = text_en;
+          lan = ref(tex_en);
+
+          const changeLanguage = (lang) => {
+            if (lang === "en") {
+              lan.value = tex_en;
+            } else {
+              lan.value = tex;
+            }
+          };
+          
           return {
-            awardsData,
-            recentNews,
-            websiteTitle,
+            // variables
+            lan,
+
+            // methods
+            changeLanguage,
           };
         },
       };
       const app = createApp(App);
       app.use(naive);
       app.mount("#app");
+      
+
     </script>
   </body>
 </html>
