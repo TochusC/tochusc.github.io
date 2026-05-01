@@ -19,24 +19,24 @@
   }
 </script>
 
-<div class="space-y-2">
+<div class="space-y-1.5">
   {#each news as item, i}
     <div
-      class="news-item group relative flex items-start gap-3 rounded-lg p-3 transition-all duration-300 hover:bg-primary/5 hover:shadow-md hover:scale-[1.02] animate-slide-up cursor-default"
-      style="animation-delay: {i * 50}ms"
+      class="news-item group relative flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all duration-200 hover:bg-primary/5 animate-slide-up"
+      style="animation-delay: {i * 40}ms"
     >
-      <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
-        <Newspaper class="h-4 w-4 text-primary transition-transform duration-300 group-hover:-rotate-12" />
+      <div class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 transition-all duration-200 group-hover:bg-primary/20">
+        <Newspaper class="h-3.5 w-3.5 text-primary" />
       </div>
 
-      <div class="flex-1 space-y-1">
-        <div class="flex flex-wrap items-center gap-2">
-          <Badge variant={getTagColor(item.tag)} class="transition-all duration-300 group-hover:shadow-sm">
+      <div class="flex-1 min-w-0">
+        <div class="mb-0.5">
+          <Badge variant={getTagColor(item.tag)} class="text-[11px] px-2 py-0">
             {item.date}
           </Badge>
         </div>
 
-        <p class="text-sm font-medium transition-colors duration-300 group-hover:text-foreground">
+        <p class="text-[13px] font-medium mb-0.5">
           {#if item.titleLink}
             <a href={item.titleLink} target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">
               {item.title}
@@ -46,7 +46,7 @@
           {/if}
         </p>
 
-        <p class="text-xs text-muted-foreground transition-colors duration-300 group-hover:text-foreground/80">
+        <p class="text-[11px] text-muted-foreground line-clamp-2">
           {#if item.descriptionLink}
             <a href={item.descriptionLink} target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">
               {item.description}
@@ -57,7 +57,7 @@
         </p>
       </div>
 
-      <div class="absolute left-0 top-0 h-full w-1 rounded-full bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div class="absolute left-0 top-0 h-full w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
     </div>
   {/each}
 </div>
@@ -65,26 +65,19 @@
 <style>
   .news-item {
     position: relative;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  .news-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.05), transparent);
-    opacity: 0;
-    transition: opacity 300ms;
-  }
-
-  .news-item:hover::before {
-    opacity: 1;
   }
 
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
@@ -93,7 +86,7 @@
   }
 
   .animate-slide-up {
-    animation: slide-up 0.4s ease-out forwards;
+    animation: slide-up 0.3s ease-out forwards;
     opacity: 0;
   }
 </style>

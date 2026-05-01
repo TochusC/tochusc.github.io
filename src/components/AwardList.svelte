@@ -19,45 +19,43 @@
   }
 </script>
 
-<div class="space-y-2">
+<div class="space-y-1.5">
   {#each awards as award, i}
     <div
-      class="award-item group relative flex items-start gap-3 rounded-lg p-3 transition-all duration-300 hover:bg-primary/5 hover:shadow-md hover:scale-[1.02] animate-slide-up cursor-default"
-      style="animation-delay: {i * 50}ms"
+      class="award-item group relative flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all duration-200 hover:bg-primary/5 animate-slide-up"
+      style="animation-delay: {i * 40}ms"
     >
-      <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
-        <AwardIcon class="h-4 w-4 text-primary transition-transform duration-300 group-hover:rotate-12" />
+      <div class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 transition-all duration-200 group-hover:bg-primary/20">
+        <AwardIcon class="h-3.5 w-3.5 text-primary" />
       </div>
 
-      <div class="flex-1 space-y-1">
-        <div class="flex flex-wrap items-center gap-2">
-          <Badge variant={getTierColor(award.tier)} class="transition-all duration-300 group-hover:shadow-sm">
+      <div class="flex-1 min-w-0">
+        <div class="flex flex-wrap items-center gap-1.5 mb-0.5">
+          <Badge variant={getTierColor(award.tier)} class="text-[11px] px-2 py-0">
             {award.rank}
           </Badge>
-          <span class="text-xs text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+          <span class="text-[11px] text-muted-foreground">
             {award.date}
           </span>
         </div>
 
-        <div class="flex items-start gap-1">
+        <div class="mb-0.5">
           {#if award.projectLink}
             <a
               href={award.projectLink}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-sm font-medium transition-all duration-300 hover:text-primary hover:underline group-hover:text-primary"
+              class="text-[13px] font-medium hover:text-primary hover:underline inline-flex items-center gap-1"
             >
-              {award.name}
-              <ExternalLink class="inline h-3 w-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <span class="truncate">{award.name}</span>
+              <ExternalLink class="h-3 w-3 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
           {:else}
-            <p class="text-sm font-medium transition-colors duration-300 group-hover:text-foreground">
-              {award.name}
-            </p>
+            <p class="text-[13px] font-medium truncate">{award.name}</p>
           {/if}
         </div>
 
-        <p class="text-xs text-muted-foreground transition-colors duration-300 group-hover:text-foreground/80">
+        <p class="text-[11px] text-muted-foreground truncate">
           {#if award.competitionLink}
             <a href={award.competitionLink} target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">
               {award.competition}
@@ -68,7 +66,7 @@
         </p>
       </div>
 
-      <div class="absolute left-0 top-0 h-full w-1 rounded-full bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div class="absolute left-0 top-0 h-full w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
     </div>
   {/each}
 </div>
@@ -76,26 +74,12 @@
 <style>
   .award-item {
     position: relative;
-    overflow: hidden;
-  }
-
-  .award-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.05), transparent);
-    opacity: 0;
-    transition: opacity 300ms;
-  }
-
-  .award-item:hover::before {
-    opacity: 1;
   }
 
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
@@ -104,7 +88,7 @@
   }
 
   .animate-slide-up {
-    animation: slide-up 0.4s ease-out forwards;
+    animation: slide-up 0.3s ease-out forwards;
     opacity: 0;
   }
 </style>
