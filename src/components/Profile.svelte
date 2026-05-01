@@ -10,13 +10,14 @@
   import LanguageSwitcher from './LanguageSwitcher.svelte';
   import SocialLinks from './SocialLinks.svelte';
   import AwardList from './AwardList.svelte';
+  import PublicationList from './PublicationList.svelte';
   import NewsList from './NewsList.svelte';
-  import { GraduationCap, MapPin, BookOpen, Award, Newspaper, Sparkles } from 'lucide-svelte';
+  import { GraduationCap, MapPin, BookOpen, Award, FileText, Newspaper, Scholar } from 'lucide-svelte';
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
 
   $: data = getProfileData($language);
-  $: activeTab = 'awards';
+  $: activeTab = 'publications';
 
   function tabSlide(node, { duration = 300, delay = 0 }) {
     return {
@@ -40,9 +41,9 @@
       <!-- Header -->
       <header class="mb-8 flex items-center justify-between animate-fade-in">
         <div class="flex items-center gap-3">
-          <Sparkles class="h-5 w-5 text-primary" />
+          <GraduationCap class="h-5 w-5 text-primary" />
           <h1 class="text-xl font-bold gradient-text">
-            {$language === 'zh' ? '个人主页' : 'Portfolio'}
+            {$language === 'zh' ? '学术主页' : 'Academic Profile'}
           </h1>
         </div>
         <LanguageSwitcher />
@@ -122,7 +123,7 @@
             <CardHeader class="pb-2 pt-4 px-4">
               <CardTitle class="text-sm font-semibold flex items-center gap-2">
                 <div class="h-1.5 w-1.5 rounded-full bg-primary" />
-                {$language === 'zh' ? '快速信息' : 'Quick Info'}
+                {$language === 'zh' ? '教育背景' : 'Education'}
               </CardTitle>
             </CardHeader>
             <CardContent class="px-4 pb-4 space-y-2">
@@ -131,10 +132,24 @@
                   <GraduationCap class="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p class="text-xs font-medium">{$language === 'zh' ? '学历' : 'Education'}</p>
+                  <p class="text-xs font-medium">{$language === 'zh' ? '硕士' : 'Master'}</p>
                   <p class="text-[11px] text-muted-foreground">
-                    {$language === 'zh' ? '硕士研究生（在读）' : 'Master Student'}
+                    {data.school} · {data.major}
                   </p>
+                  <p class="text-[10px] text-muted-foreground">2025 - {$language === 'zh' ? '至今' : 'Present'}</p>
+                </div>
+              </div>
+
+              <div class="group flex items-center gap-3 rounded-lg bg-muted/30 p-2.5 transition-all duration-200 hover:bg-primary/5">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 transition-all duration-200 group-hover:bg-primary/20">
+                  <BookOpen class="h-4 w-4 text-primary" />
+                </div>
+                <div>
+                  <p class="text-xs font-medium">{$language === 'zh' ? '本科' : 'Bachelor'}</p>
+                  <p class="text-[11px] text-muted-foreground">
+                    {data.undergraduate}
+                  </p>
+                  <p class="text-[10px] text-muted-foreground">{data.undergraduateMajor} · 2021 - 2025</p>
                 </div>
               </div>
 
@@ -159,7 +174,21 @@
             <!-- Tab 按钮 -->
             <div class="flex border-b border-border/50">
               <button
-                class="flex-1 flex items-center justify-center gap-2 px-4 py-3.5 text-sm font-medium transition-all duration-300 relative {activeTab === 'awards' ? 'text-primary bg-primary/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'}"
+                class="flex-1 flex items-center justify-center gap-2 px-3 py-3 text-sm font-medium transition-all duration-300 relative {activeTab === 'publications' ? 'text-primary bg-primary/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'}"
+                on:click={() => activeTab = 'publications'}
+              >
+                <FileText class="h-4 w-4" />
+                {data.publicationsHeader}
+                <Badge variant={activeTab === 'publications' ? 'default' : 'secondary'} class="text-[10px] px-1.5 py-0">
+                  {data.publications.length}
+                </Badge>
+                {#if activeTab === 'publications'}
+                  <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                {/if}
+              </button>
+              <div class="w-px bg-border/50 self-stretch my-2" />
+              <button
+                class="flex-1 flex items-center justify-center gap-2 px-3 py-3 text-sm font-medium transition-all duration-300 relative {activeTab === 'awards' ? 'text-primary bg-primary/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'}"
                 on:click={() => activeTab = 'awards'}
               >
                 <Award class="h-4 w-4" />
@@ -173,7 +202,7 @@
               </button>
               <div class="w-px bg-border/50 self-stretch my-2" />
               <button
-                class="flex-1 flex items-center justify-center gap-2 px-4 py-3.5 text-sm font-medium transition-all duration-300 relative {activeTab === 'news' ? 'text-primary bg-primary/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'}"
+                class="flex-1 flex items-center justify-center gap-2 px-3 py-3 text-sm font-medium transition-all duration-300 relative {activeTab === 'news' ? 'text-primary bg-primary/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'}"
                 on:click={() => activeTab = 'news'}
               >
                 <Newspaper class="h-4 w-4" />
@@ -190,15 +219,13 @@
             <!-- 内容区域 -->
             <CardContent class="p-5">
               <div class="scrollable-content" style="max-height: calc(100vh - 220px); overflow-y: auto;">
-                {#key activeTab}
-                  <div in:tabSlide={{ duration: 250 }}>
-                    {#if activeTab === 'awards'}
-                      <AwardList awards={data.awards} />
-                    {:else}
-                      <NewsList news={data.news} />
-                    {/if}
-                  </div>
-                {/key}
+                {#if activeTab === 'publications'}
+                  <PublicationList publications={data.publications} />
+                {:else if activeTab === 'awards'}
+                  <AwardList awards={data.awards} />
+                {:else}
+                  <NewsList news={data.news} />
+                {/if}
               </div>
             </CardContent>
           </Card>
@@ -208,11 +235,11 @@
       <!-- Footer -->
       <footer class="mt-8 text-center animate-fade-in">
         <div class="inline-flex items-center gap-1.5 rounded-full bg-muted/40 px-3 py-1.5 text-[11px] text-muted-foreground">
-          <Sparkles class="h-3 w-3" />
+          <GraduationCap class="h-3 w-3" />
           <span>
             {$language === 'zh'
-              ? '使用 Astro + Svelte + shadcn/ui 构建'
-              : 'Built with Astro + Svelte + shadcn/ui'}
+              ? '使用 Astro + Svelte 构建'
+              : 'Built with Astro + Svelte'}
           </span>
         </div>
       </footer>

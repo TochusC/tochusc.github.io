@@ -1,15 +1,17 @@
 <script lang="ts">
   import Button from './ui/button.svelte';
-  import { Github, Mail, Twitter } from 'lucide-svelte';
+  import { Github, Mail, Twitter, BookOpen } from 'lucide-svelte';
 
   export let social: {
     github: string;
     email: string;
     twitter: string;
     bilibili: string;
+    scholar: string;
   };
 
   const links = [
+    { href: social.scholar, icon: BookOpen, label: 'Google Scholar' },
     { href: social.github, icon: Github, label: 'GitHub' },
     { href: social.email, icon: Mail, label: 'Email' },
     { href: social.twitter, icon: Twitter, label: 'Twitter' },
@@ -22,9 +24,9 @@
       {href}
       variant="outline"
       size="icon"
-      class="h-9 w-9 rounded-full hover-lift"
+      class="h-8 w-8 rounded-lg hover-lift"
     >
-      <Icon class="h-4 w-4" />
+      <Icon class="h-3.5 w-3.5" />
       <span class="sr-only">{label}</span>
     </Button>
   {/each}
@@ -32,12 +34,12 @@
     href={social.bilibili}
     variant="outline"
     size="icon"
-    class="h-9 w-9 rounded-full hover-lift"
+    class="h-8 w-8 rounded-lg hover-lift"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
+      width="14"
+      height="14"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
