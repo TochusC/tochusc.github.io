@@ -17,7 +17,7 @@
   import { quintOut } from 'svelte/easing';
 
   $: data = getProfileData($language);
-  $: activeTab = 'publications';
+  let activeTab = 'publications';
 
   function tabSlide(node, { duration = 300, delay = 0 }) {
     return {
