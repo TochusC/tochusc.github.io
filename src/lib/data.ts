@@ -389,6 +389,13 @@ export const profileDataEn: ProfileData = {
       "date": "2024-11"
     },
     {
+      "tier": "school",
+      "rank": "University Scholarship",
+      "name": "2023–2024 Science and Technology Innovation Scholarship",
+      "competition": "China University of Petroleum (East China)",
+      "date": "2024-10"
+    },
+    {
       "tier": "national",
       "rank": "National Third Prize",
       "name": "Mental Health Education System Based on Multi-modal Analysis",
@@ -429,6 +436,22 @@ export const profileDataEn: ProfileData = {
       "competition": "National Mathematical Modeling Contest",
       "competitionLink": "http://www.mcm.edu.cn/",
       "date": "2023-09"
+    },
+    {
+      "tier": "national",
+      "rank": "National Third Prize",
+      "name": "Real-time Wind Power Prediction with Deep Learning",
+      "projectLink": "https://www.bilibili.com/video/BV1kG411d7Zr/",
+      "competition": "13th China Software Cup Software Design Competition",
+      "competitionLink": "https://www.cnsoftbei.com/",
+      "date": "2023-07"
+    },
+    {
+      "tier": "provincial",
+      "rank": "East China Second Prize",
+      "name": "SDN Operations and Maintenance System",
+      "competition": "China Collegiate Computing Competition — Network Technology Challenge (BEP-4)",
+      "date": "2023-06"
     }
   ],
   "news": [
