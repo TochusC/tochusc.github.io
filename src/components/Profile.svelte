@@ -43,7 +43,6 @@
       <div class="max-w-2xl">
         <div class="mb-4 flex flex-wrap gap-2"><Badge variant="secondary">{data.school}</Badge><Badge variant="outline">{zh ? '网络空间安全 · 硕士研究生' : 'Cybersecurity · Master’s student'}</Badge></div>
         <h1 id="profile-name" class="text-4xl font-semibold tracking-tight sm:text-5xl">{data.name}<span class="ml-4 inline-block text-xl font-normal text-muted-foreground sm:text-2xl">{zh ? 'Zuyao Xu' : '许祖耀'}</span></h1>
-        <p class="mt-5 text-base leading-8 text-muted-foreground">{zh ? '关注互联网基础设施安全、网络测量与智能体安全。希望通过测量、协议设计和真实系统中的漏洞研究，让网络与 AI 系统更可靠。' : 'I study Internet infrastructure security, network measurement, and agent security, with an interest in making networks and AI systems more reliable through measurement, protocol design, and vulnerability research.'}</p>
         <p class="mt-3 text-sm text-muted-foreground">{data.advisorHeader} <a href={data.advisorLink} class="font-medium text-foreground underline underline-offset-4" target="_blank" rel="noreferrer">{data.advisor}</a><span class="mx-3">·</span>{zh ? '中国 · 天津' : 'Tianjin, China'}</p>
         <div class="mt-6 flex flex-wrap gap-2">
           <a class={buttonVariants({size:'sm'})} href={zh ? '/resume-zh.pdf' : '/resume-en.pdf'} download><Download class="mr-2 h-4 w-4" />{zh ? '下载简历' : 'Download CV'}</a>
@@ -68,7 +67,7 @@
           <Card.Header class="pb-4"><Card.Title tag="h2" class="text-sm">{zh ? '研究方向' : 'Research interests'}</Card.Title></Card.Header>
           <Card.Content class="flex flex-wrap gap-2"><Badge variant="secondary">DNS Security</Badge><Badge variant="secondary">Internet Measurement</Badge><Badge variant="secondary">LLM & Agent Security</Badge></Card.Content>
         </Card.Root>
-        <div class="px-1 text-sm leading-7 text-muted-foreground"><p>{zh ? '技术之外，也喜欢攀岩、跑步和定向越野。' : 'Outside research: climbing, running, and orienteering.'}</p><a class="mt-2 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.bilibili} target="_blank" rel="noreferrer">{zh ? '竞赛与项目分享' : 'Projects & competition videos'}<ArrowUpRight size={14} class="ml-1" /></a><a class="ml-3 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.twitter} target="_blank" rel="noreferrer">X<ArrowUpRight size={14} class="ml-1" /></a></div>
+        <div class="px-1 text-sm leading-7 text-muted-foreground"><a class="mt-2 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.bilibili} target="_blank" rel="noreferrer">{zh ? '竞赛与项目分享' : 'Projects & competition videos'}<ArrowUpRight size={14} class="ml-1" /></a><a class="ml-3 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.twitter} target="_blank" rel="noreferrer">X<ArrowUpRight size={14} class="ml-1" /></a></div>
       </aside>
 
       <div class="min-w-0 space-y-8">

@@ -16,7 +16,6 @@ export interface Publication {
   link?: string;
   status: 'published' | 'preprint' | 'accepted' | 'poster';
   role?: string;
-  note?: string;
 }
 
 export interface NewsItem {
@@ -81,8 +80,7 @@ export const profileData: ProfileData = {
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "第一作者",
-      "note": "互联网尺度的开放 Ollama 服务长期测量。"
+      "role": "第一作者"
     },
     {
       "title": "GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models",
@@ -91,8 +89,7 @@ export const profileData: ProfileData = {
       "year": 2026,
       "link": "https://arxiv.org/abs/2602.06718",
       "status": "poster",
-      "role": "共同第一作者（第一顺位）",
-      "note": "大规模分析大语言模型时代的引用有效性，研究成果获两项 Poster 录用。"
+      "role": "共同第一作者（第一顺位）"
     },
     {
       "title": "Agent Transfer Protocol: Server-Mediated Authentication and Messaging for Agent-to-Agent Communication",
@@ -100,8 +97,7 @@ export const profileData: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "共同第一作者（第三顺位）",
-      "note": "智能体间通信协议；CCF-NSS 版本题名为 Agent Transfer Protocol: A Server-Mediated Agent-to-Agent Communication Protocol for the Internet of Agents。"
+      "role": "共同第一作者（第三顺位）"
     },
     {
       "title": "aCAPTCHA: Verifying That an Entity Is a Capable Agent via Asymmetric Hardness",
@@ -109,8 +105,7 @@ export const profileData: ProfileData = {
       "venue": "arXiv",
       "year": 2026,
       "link": "https://arxiv.org/abs/2603.07116",
-      "status": "preprint",
-      "note": "基于非对称难度的智能体能力验证。"
+      "status": "preprint"
     },
     {
       "title": "RebirthDay Attack: Reviving DNS Cache Poisoning with the Birthday Paradox",
@@ -119,8 +114,7 @@ export const profileData: ProfileData = {
       "year": 2025,
       "link": "https://doi.org/10.1145/3719027.3744832",
       "status": "published",
-      "role": "第三作者",
-      "note": "基于生日悖论的 DNS 缓存投毒攻击研究。"
+      "role": "第三作者"
     }
   ],
   "awards": [
@@ -307,8 +301,7 @@ export const profileDataEn: ProfileData = {
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "First author",
-      "note": "A longitudinal measurement of exposed Ollama endpoints at Internet scale."
+      "role": "First author"
     },
     {
       "title": "GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models",
@@ -317,8 +310,7 @@ export const profileDataEn: ProfileData = {
       "year": 2026,
       "link": "https://arxiv.org/abs/2602.06718",
       "status": "poster",
-      "role": "Equal contribution · first listed",
-      "note": "Large-scale analysis of citation validity in the age of LLMs; accepted as posters at IEEE S&P and CCF-NSS."
+      "role": "Equal contribution · first listed"
     },
     {
       "title": "Agent Transfer Protocol: Server-Mediated Authentication and Messaging for Agent-to-Agent Communication",
@@ -326,8 +318,7 @@ export const profileDataEn: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "Co-first author · third listed",
-      "note": "Agent-to-agent authentication and messaging. The CCF-NSS version is titled “Agent Transfer Protocol: A Server-Mediated Agent-to-Agent Communication Protocol for the Internet of Agents.”"
+      "role": "Co-first author · third listed"
     },
     {
       "title": "aCAPTCHA: Verifying That an Entity Is a Capable Agent via Asymmetric Hardness",
@@ -335,8 +326,7 @@ export const profileDataEn: ProfileData = {
       "venue": "arXiv",
       "year": 2026,
       "link": "https://arxiv.org/abs/2603.07116",
-      "status": "preprint",
-      "note": "Verifying agent capability through asymmetric hardness."
+      "status": "preprint"
     },
     {
       "title": "RebirthDay Attack: Reviving DNS Cache Poisoning with the Birthday Paradox",
@@ -345,8 +335,7 @@ export const profileDataEn: ProfileData = {
       "year": 2025,
       "link": "https://doi.org/10.1145/3719027.3744832",
       "status": "published",
-      "role": "Third author",
-      "note": "Revisiting DNS cache poisoning through the birthday paradox."
+      "role": "Third author"
     }
   ],
   "awards": [
