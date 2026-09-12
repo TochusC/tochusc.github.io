@@ -6,9 +6,10 @@ import path from 'path';
 export default defineConfig({
   integrations: [
     svelte(),
-    tailwind(),
+    tailwind({ applyBaseStyles: false }),
   ],
   output: 'static',
+  site: 'https://tochusc.github.io',
   vite: {
     resolve: {
       alias: {

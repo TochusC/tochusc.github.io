@@ -1,90 +1,20 @@
 <script lang="ts">
   import type { Publication } from '$lib/data';
-  import Badge from './ui/badge.svelte';
-  import { FileText, ExternalLink, BookOpen } from 'lucide-svelte';
-
+  import { language } from '$lib/stores';
+  import { Badge } from './ui/badge';
+  import { ArrowUpRight } from 'lucide-svelte';
   export let publications: Publication[];
+  $: zh = $language === 'zh';
+  $: labels = zh ? {published:'已发表',accepted:'已录用',preprint:'预印本',poster:'Poster 录用'} : {published:'Published',accepted:'Accepted',preprint:'Preprint',poster:'Poster accepted'};
 </script>
-
-<div class="space-y-3">
-  {#each publications as pub, i}
-    <div
-      class="pub-item group relative flex items-start gap-3 rounded-lg px-3 py-3 transition-all duration-200 hover:bg-primary/5 animate-slide-up"
-      style="animation-delay: {i * 60}ms"
-    >
-      <div class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 transition-all duration-200 group-hover:bg-primary/20">
-        <FileText class="h-3.5 w-3.5 text-primary" />
-      </div>
-
-      <div class="flex-1 min-w-0">
-        <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
-          <Badge variant={pub.status === 'published' ? 'default' : 'secondary'} class="text-[11px] px-2 py-0">
-            {pub.status === 'published' ? 'Published' : 'Preprint'}
-          </Badge>
-          <Badge variant="outline" class="text-[11px] px-2 py-0">
-            {pub.venue}
-          </Badge>
-          <span class="text-[11px] text-muted-foreground">{pub.year}</span>
-        </div>
-
-        <div class="mb-1">
-          {#if pub.link}
-            <a
-              href={pub.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-[13px] font-medium hover:text-primary hover:underline inline-flex items-center gap-1"
-            >
-              <span class="line-clamp-2">{pub.title}</span>
-              <ExternalLink class="h-3 w-3 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
-          {:else}
-            <p class="text-[13px] font-medium line-clamp-2">{pub.title}</p>
-          {/if}
-        </div>
-
-        <p class="text-[11px] text-muted-foreground line-clamp-1">
-          {pub.authors}
-        </p>
-      </div>
-
-      <div class="absolute left-0 top-0 h-full w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-    </div>
+<div class="divide-y">
+  {#each publications as p}
+    <article class="py-6 first:pt-0 last:pb-0">
+      <div class="mb-3 flex flex-wrap items-center gap-2"><Badge variant={p.status === 'published' ? 'default' : 'secondary'}>{p.venue}</Badge><span class="text-xs text-muted-foreground">{labels[p.status]}</span></div>
+      <h2 class="text-base font-semibold leading-7 tracking-tight">{#if p.link}<a href={p.link} target="_blank" rel="noreferrer" class="hover:underline underline-offset-4">{p.title}<ArrowUpRight class="ml-1 inline h-4 w-4" /></a>{:else}{p.title}{/if}</h2>
+      <p class="mt-2 text-sm leading-6 text-muted-foreground">{p.authors}</p>
+      {#if p.role}<p class="mt-1 text-xs font-medium">{p.role}</p>{/if}
+      {#if p.note}<p class="mt-3 text-sm leading-6 text-muted-foreground">{p.note}</p>{/if}
+    </article>
   {/each}
 </div>
-
-<style>
-  .pub-item {
-    position: relative;
-  }
-
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-slide-up {
-    animation: slide-up 0.3s ease-out forwards;
-    opacity: 0;
-  }
-</style>

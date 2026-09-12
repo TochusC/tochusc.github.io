@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = '个人主页 - 许祖耀' } = Astro.props;
+const { title, description = '许祖耀，南开大学网络空间安全硕士研究生。研究互联网基础设施安全、网络测量与智能体安全。' } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,12 +14,6 @@ const { title, description = '个人主页 - 许祖耀' } = Astro.props;
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-background font-sans antialiased">
