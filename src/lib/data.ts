@@ -81,7 +81,7 @@ export const profileData: ProfileData = {
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "共同第一作者（第三顺位）",
+      "role": "第一作者",
       "note": "互联网尺度的开放 Ollama 服务长期测量。"
     },
     {
@@ -100,7 +100,7 @@ export const profileData: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "第三作者",
+      "role": "共同第一作者（第三顺位）",
       "note": "智能体间通信协议；CCF-NSS 版本题名为 Agent Transfer Protocol: A Server-Mediated Agent-to-Agent Communication Protocol for the Internet of Agents。"
     },
     {
@@ -244,13 +244,13 @@ export const profileData: ProfileData = {
       "tag": "publication",
       "date": "2026-09",
       "title": "ATP 获 IMC 2026 Poster 录用",
-      "description": "智能体间认证与消息通信协议，第三作者。"
+      "description": "智能体间认证与消息通信协议，共同第一作者（第三顺位）。"
     },
     {
       "tag": "publication",
       "date": "2026-08",
       "title": "Ollama in the Wild 获 IMC 2026 录用",
-      "description": "开放 Ollama 端点的长期互联网测量，共同第一作者（第三顺位）。"
+      "description": "开放 Ollama 端点的长期互联网测量，第一作者。"
     },
     {
       "tag": "publication",
@@ -307,7 +307,7 @@ export const profileDataEn: ProfileData = {
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "Equal contribution · third listed",
+      "role": "First author",
       "note": "A longitudinal measurement of exposed Ollama endpoints at Internet scale."
     },
     {
@@ -326,7 +326,7 @@ export const profileDataEn: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "Third author",
+      "role": "Co-first author · third listed",
       "note": "Agent-to-agent authentication and messaging. The CCF-NSS version is titled “Agent Transfer Protocol: A Server-Mediated Agent-to-Agent Communication Protocol for the Internet of Agents.”"
     },
     {
@@ -447,13 +447,13 @@ export const profileDataEn: ProfileData = {
       "tag": "publication",
       "date": "2026-09",
       "title": "ATP accepted to IMC 2026 Posters",
-      "description": "Agent-to-agent authentication and messaging; third author."
+      "description": "Agent-to-agent authentication and messaging; co-first author, third listed."
     },
     {
       "tag": "publication",
       "date": "2026-08",
       "title": "Ollama in the Wild accepted to IMC 2026",
-      "description": "Longitudinal Internet measurement; equal contribution, third listed."
+      "description": "Longitudinal Internet measurement; first author."
     },
     {
       "tag": "publication",
