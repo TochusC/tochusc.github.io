@@ -10,7 +10,7 @@
   {#each projects as project}
     <article class="py-5 first:pt-0">
       <div class="mb-3 flex items-center justify-between gap-3">
-        <div class="flex flex-wrap gap-2"><Badge variant="outline">{project.language}</Badge>{#if project.courseScore}<Badge variant="secondary">{zh ? '课设' : 'Course project'} · {project.courseScore}{zh ? ' 分' : '/100'}</Badge>{/if}</div>
+        <div lang="en" class="flex flex-wrap gap-2"><Badge variant="outline">{project.language}</Badge>{#if project.courseScore}<Badge variant="secondary">Course project · {project.courseScore}/100</Badge>{/if}</div>
         <span class="inline-flex items-center gap-1.5 text-sm font-medium" aria-label={`${project.stars} GitHub stars`}><Star size={15} />{project.stars}</span>
       </div>
       <h2 class="text-sm font-semibold leading-6"><a href={`https://github.com/TochusC/${project.repo}`} target="_blank" rel="noreferrer" class="hover:underline underline-offset-4">{project.name}<ArrowUpRight class="ml-1 inline h-4 w-4" /></a></h2>

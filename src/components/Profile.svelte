@@ -5,7 +5,7 @@
   import * as Card from './ui/card';
   import * as Tabs from './ui/tabs';
   import { Badge } from './ui/badge';
-  import { ArrowUpRight, Download, Github, Mail, Moon, Sun, ShieldCheck } from 'lucide-svelte';
+  import { ArrowUpRight, Download, Github, Languages, Mail, Moon, Sun, ShieldCheck } from 'lucide-svelte';
   import PublicationList from './PublicationList.svelte';
   import AwardList from './AwardList.svelte';
   import NewsList from './NewsList.svelte';
@@ -31,9 +31,9 @@
 <div class="profile-shell mx-auto max-w-[1600px] px-5 sm:px-8">
   <a class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:p-3" href="#main">{zh ? '跳转到正文' : 'Skip to content'}</a>
   <header class="profile-header flex min-h-16 items-center justify-between gap-3 border-b">
-    <a href="/" class="text-sm font-semibold tracking-tight" aria-label={zh ? '许祖耀主页' : 'Zuyao Xu home'}>ZU YAO XU<span class="ml-2 text-muted-foreground font-normal">/ TochusC</span></a>
+    <a href="/" class="text-sm font-semibold tracking-tight" aria-label={zh ? '许祖耀主页' : 'Zuyao Xu home'}>Zuyao Xu</a>
     <div class="flex items-center gap-1">
-      <Button variant="ghost" size="sm" aria-label={zh ? 'Switch to English' : '切换到中文'} on:click={() => language.toggle()}>{zh ? 'EN' : '中文'}</Button>
+      <Button variant="ghost" size="icon" aria-label={zh ? 'Switch to English' : '切换到中文'} title={zh ? 'Switch to English' : '切换到中文'} on:click={() => language.toggle()}><Languages size={18} aria-hidden="true" /></Button>
       <Button variant="ghost" size="icon" aria-label={zh ? (dark ? '切换浅色模式' : '切换深色模式') : (dark ? 'Switch to light theme' : 'Switch to dark theme')} on:click={toggleTheme}>
         {#if dark}<Sun size={17} />{:else}<Moon size={17} />{/if}
       </Button>
@@ -41,18 +41,18 @@
   </header>
 
   <main id="main" class="profile-main py-6">
-    <section aria-labelledby="profile-name" class="profile-hero mb-6 grid items-start gap-4 grid-cols-[auto_minmax(0,1fr)] sm:items-center sm:gap-6">
-      <img src="/me.png" alt={zh ? '许祖耀' : 'Zuyao Xu'} width="160" height="160" class="h-20 w-20 rounded-md border object-cover sm:h-28 sm:w-28" />
-      <div class="min-w-0 max-w-2xl">
-        <div class="mb-3 flex flex-wrap gap-2"><Badge variant="secondary">{data.school}</Badge><Badge variant="outline">{zh ? '网络空间安全 · 硕士研究生' : 'Cybersecurity · Master’s student'}</Badge></div>
-        <h1 id="profile-name" class="text-3xl font-semibold tracking-tight sm:text-4xl">{data.name}<span class="ml-2 inline-block text-lg font-normal text-muted-foreground sm:text-2xl">{zh ? 'Zuyao Xu' : '许祖耀'}</span></h1>
-        <p class="mt-3 text-sm text-muted-foreground">{data.advisorHeader} <a href={data.advisorLink} class="font-medium text-foreground underline underline-offset-4" target="_blank" rel="noreferrer">{data.advisor}</a><span class="mx-3">·</span>{zh ? '中国 · 天津' : 'Tianjin, China'}</p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <a class={buttonVariants({size:'sm'})} href={zh ? '/resume-zh.pdf' : '/resume-en.pdf'} download><Download class="mr-2 h-4 w-4" />{zh ? '下载简历' : 'Download CV'}</a>
-          <a class={buttonVariants({variant:'outline',size:'sm'})} href={data.social.email}><Mail class="mr-2 h-4 w-4" />{zh ? '联系我' : 'Email'}</a>
-          <a class={buttonVariants({variant:'outline',size:'sm'})} href={data.social.github} target="_blank" rel="noreferrer"><Github class="mr-2 h-4 w-4" />GitHub</a>
-          <a class={buttonVariants({variant:'ghost',size:'sm'})} href={data.social.scholar} target="_blank" rel="noreferrer">Google Scholar<ArrowUpRight class="ml-1 h-4 w-4" /></a>
-        </div>
+    <section aria-labelledby="profile-name" class="profile-hero mb-6 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-4 sm:gap-x-6">
+      <img src="/portrait.jpg" alt={zh ? '许祖耀' : 'Zuyao Xu'} width="160" height="160" class="h-28 w-28 rounded-md border bg-muted/30 object-contain p-1.5 min-[375px]:h-32 min-[375px]:w-32 sm:row-span-2 sm:h-40 sm:w-40 sm:self-center" />
+      <div class="flex min-w-0 max-w-2xl flex-col">
+        <div lang="en" class="mt-2 flex flex-wrap gap-1.5 sm:mb-3 sm:mt-0 sm:gap-2"><Badge variant="secondary" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Nankai University</Badge><Badge variant="outline" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Cybersecurity · Master’s student</Badge></div>
+        <h1 id="profile-name" class="order-first text-2xl font-semibold leading-tight tracking-tight sm:order-none sm:text-4xl">{data.name}<span class="mt-1 block text-sm font-normal text-muted-foreground sm:ml-2 sm:mt-0 sm:inline-block sm:text-2xl">{zh ? 'Zuyao Xu' : '许祖耀'}</span></h1>
+        <p class="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-muted-foreground sm:mt-3 sm:text-sm"><span>{data.advisorHeader} <a href={data.advisorLink} class="font-medium text-foreground underline underline-offset-4" target="_blank" rel="noreferrer">{data.advisor}</a></span><span class="hidden sm:inline" aria-hidden="true">·</span><span class="basis-full sm:basis-auto">{zh ? '中国 · 天津' : 'Tianjin, China'}</span></p>
+      </div>
+      <div class="col-span-2 grid grid-cols-2 gap-2 sm:col-span-1 sm:col-start-2 sm:flex sm:flex-wrap">
+        <a class={buttonVariants({size:'sm', class: 'px-2 text-xs sm:px-3 sm:text-sm'})} href={zh ? '/resume-zh.pdf' : '/resume-en.pdf'} download><Download class="mr-2 h-4 w-4" />{zh ? '下载简历' : 'Download CV'}</a>
+        <a class={buttonVariants({variant:'outline',size:'sm', class: 'px-2 text-xs sm:px-3 sm:text-sm'})} href={data.social.email}><Mail class="mr-2 h-4 w-4" />{zh ? '联系我' : 'Email'}</a>
+        <a class={buttonVariants({variant:'outline',size:'sm', class: 'px-2 text-xs sm:px-3 sm:text-sm'})} href={data.social.github} target="_blank" rel="noreferrer"><Github class="mr-2 h-4 w-4" />GitHub</a>
+        <a class={buttonVariants({variant:'ghost',size:'sm', class: 'px-2 text-xs sm:px-3 sm:text-sm'})} href={data.social.scholar} target="_blank" rel="noreferrer">Google Scholar<ArrowUpRight class="ml-1 h-4 w-4" /></a>
       </div>
     </section>
 
@@ -69,18 +69,18 @@
         </Card.Root>
         <Card.Root>
           <Card.Header class="pb-4"><Card.Title tag="h2" class="text-sm">{zh ? '研究方向' : 'Research interests'}</Card.Title></Card.Header>
-          <Card.Content class="flex flex-wrap gap-2"><Badge variant="secondary">DNS Security</Badge><Badge variant="secondary">Internet Measurement</Badge><Badge variant="secondary">LLM & Agent Security</Badge></Card.Content>
+          <Card.Content lang="en" class="flex flex-wrap gap-2"><Badge variant="secondary">DNS Security</Badge><Badge variant="secondary">Internet Measurement</Badge><Badge variant="secondary">LLM & Agent Security</Badge></Card.Content>
         </Card.Root>
         <div class="px-1 text-sm leading-7 text-muted-foreground"><a class="mt-2 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.bilibili} target="_blank" rel="noreferrer">{zh ? '竞赛与项目分享' : 'Projects & competition videos'}<ArrowUpRight size={14} class="ml-1" /></a><a class="ml-3 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.twitter} target="_blank" rel="noreferrer">X<ArrowUpRight size={14} class="ml-1" /></a></div>
       </aside>
 
       <div class="profile-results min-w-0 rounded-lg border p-4 sm:p-5">
         <Tabs.Root bind:value={tab} class="results-tabs">
-          <Tabs.List class="grid h-auto w-full grid-cols-4 p-1" aria-label={zh ? '个人成果分类' : 'Profile sections'}>
-            <Tabs.Trigger value="publications" class="gap-1 px-1 py-2 text-xs sm:text-sm">{zh ? '论文' : 'Research'}<span class="text-xs opacity-60">{data.publications.length}</span></Tabs.Trigger>
-            <Tabs.Trigger value="awards" class="gap-1 px-1 py-2 text-xs sm:text-sm">{zh ? '获奖' : 'Awards'}<span class="text-xs opacity-60">{data.awards.length}</span></Tabs.Trigger>
-            <Tabs.Trigger value="news" class="gap-1 px-1 py-2 text-xs sm:text-sm">{zh ? '动态' : 'News'}<span class="text-xs opacity-60">{data.news.length}</span></Tabs.Trigger>
-            <Tabs.Trigger value="projects" class="gap-1 px-1 py-2 text-xs sm:text-sm">{zh ? '开源' : 'Projects'}<span class="text-xs opacity-60">{projects.length}</span></Tabs.Trigger>
+          <Tabs.List lang="en" class="grid h-auto w-full grid-cols-4 p-1" aria-label="Profile sections">
+            <Tabs.Trigger value="publications" class="gap-1 px-1 py-2 text-xs sm:text-sm">Research<span class="text-xs opacity-60">{data.publications.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="awards" class="gap-1 px-1 py-2 text-xs sm:text-sm">Awards<span class="text-xs opacity-60">{data.awards.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="news" class="gap-1 px-1 py-2 text-xs sm:text-sm">News<span class="text-xs opacity-60">{data.news.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="projects" class="gap-1 px-1 py-2 text-xs sm:text-sm">Projects<span class="text-xs opacity-60">{projects.length}</span></Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content value="publications" class="results-content scroll-region mt-4" tabindex={0}><PublicationList publications={data.publications} /></Tabs.Content>
           <Tabs.Content value="awards" class="results-content scroll-region mt-4" tabindex={0}><AwardList awards={data.awards} /></Tabs.Content>
@@ -95,10 +95,20 @@
         <section aria-labelledby="security-title">
           <h2 id="security-title" class="mb-4 flex items-center gap-2 text-base font-semibold"><ShieldCheck size={18} />{zh ? '漏洞与技术成果' : 'Vulnerabilities & artifacts'}</h2>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <Card.Root><Card.Header class="pb-3"><div class="mb-2"><Badge variant="outline">CVSS 3.1 · 7.5</Badge></div><Card.Title class="text-base">CVE-2025-8677</Card.Title></Card.Header><Card.Content><p class="text-sm leading-6 text-muted-foreground">{zh ? 'BIND 9 DNSKEY 处理资源耗尽漏洞。ISC 官方致谢许祖耀与李想。' : 'Resource exhaustion via malformed DNSKEY handling in BIND 9. Acknowledged by ISC alongside Xiang Li.'}</p><a class="mt-3 inline-flex items-center text-sm underline underline-offset-4" href="https://kb.isc.org/docs/cve-2025-8677" target="_blank" rel="noreferrer">{zh ? '官方公告' : 'ISC advisory'}<ArrowUpRight size={14} class="ml-1" /></a></Card.Content></Card.Root>
-            <Card.Root><Card.Header class="pb-3"><div class="mb-2"><Badge variant="outline">ACSAC 2025 · 2nd Place</Badge></div><Card.Title class="text-base">XMap</Card.Title></Card.Header><Card.Content><p class="text-sm leading-6 text-muted-foreground">{zh ? '互联网尺度 IPv4 / IPv6 网络扫描工具，获网络安全技术成果影响力奖第二名。' : 'Fast Internet-wide IPv4 and IPv6 Network Scanner. Cybersecurity Artifacts Impact Award, second place.'}</p></Card.Content></Card.Root>
+            <Card.Root>
+              <Card.Header class="pb-3">
+                <div class="mb-2"><Badge lang="en">CVSS 3.1 · 5.3 · Medium</Badge></div>
+                <Card.Title class="text-base">CVE-2026-19668</Card.Title>
+              </Card.Header>
+              <Card.Content>
+                <p class="text-sm leading-6 text-muted-foreground">{zh ? 'BIND 9 DNSSEC 记录处理资源耗尽漏洞。与李想共同报告，获 ISC 官方署名致谢。' : 'Resource exhaustion through DNSSEC record processing in BIND 9. Co-reported with Xiang Li and acknowledged by ISC.'}</p>
+                <a class="mt-3 inline-flex items-center text-sm underline underline-offset-4" href="https://kb.isc.org/docs/cve-2026-19668" target="_blank" rel="noreferrer">{zh ? '官方公告' : 'ISC advisory'}<ArrowUpRight size={14} class="ml-1" /></a>
+              </Card.Content>
+            </Card.Root>
+            <Card.Root><Card.Header class="pb-3"><div class="mb-2"><Badge lang="en">CVSS 3.1 · 7.5</Badge></div><Card.Title class="text-base">CVE-2025-8677</Card.Title></Card.Header><Card.Content><p class="text-sm leading-6 text-muted-foreground">{zh ? 'BIND 9 DNSKEY 处理资源耗尽漏洞。ISC 官方致谢许祖耀与李想。' : 'Resource exhaustion via malformed DNSKEY handling in BIND 9. Acknowledged by ISC alongside Xiang Li.'}</p><a class="mt-3 inline-flex items-center text-sm underline underline-offset-4" href="https://kb.isc.org/docs/cve-2025-8677" target="_blank" rel="noreferrer">{zh ? '官方公告' : 'ISC advisory'}<ArrowUpRight size={14} class="ml-1" /></a></Card.Content></Card.Root>
+            <Card.Root><Card.Header class="pb-3"><div class="mb-2"><Badge lang="en">ACSAC 2025 · 2nd Place</Badge></div><Card.Title class="text-base">XMap</Card.Title></Card.Header><Card.Content><p class="text-sm leading-6 text-muted-foreground">{zh ? '互联网尺度 IPv4 / IPv6 网络扫描工具，获网络安全技术成果影响力奖第二名。' : 'Fast Internet-wide IPv4 and IPv6 Network Scanner. Cybersecurity Artifacts Impact Award, second place.'}</p></Card.Content></Card.Root>
           </div>
-        <p class="mt-4 text-sm leading-6 text-muted-foreground">{zh ? 'CNVD-2025-03948296：高危漏洞联合提交人，2025 年 11 月。' : 'CNVD-2025-03948296: co-reporter of a high-severity vulnerability, November 2025.'}</p>
+        <p class="mt-4 text-sm leading-6 text-muted-foreground">{zh ? 'CNNVD-2025-03948296：高危漏洞联合提交人，2025 年 11 月。' : 'CNNVD-2025-03948296: co-reporter of a high-severity vulnerability, November 2025.'}</p>
         </section>
 
         <section aria-labelledby="service-title" class="border-t pt-7">

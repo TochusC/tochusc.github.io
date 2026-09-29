@@ -1,5 +1,6 @@
 export interface Award {
   tier: 'national' | 'provincial' | 'school';
+  // Badge labels stay in English in both language versions.
   rank: string;
   name: string;
   projectLink?: string;
@@ -120,63 +121,63 @@ export const profileData: ProfileData = {
   "awards": [
     {
       "tier": "national",
-      "rank": "三等奖 · 第20名",
+      "rank": "Third Prize · 20th place",
       "name": "互联网威胁分析赛道",
       "competition": "DataCon 2025 大数据安全分析竞赛",
       "date": "2025-11"
     },
     {
       "tier": "national",
-      "rank": "赛道冠军（二等奖）",
+      "rank": "Track winner (Second Prize)",
       "name": "DAF 漏洞利用挑战赛",
       "competition": "GeekCon 2025 安全极客大赛",
       "date": "2025-10"
     },
     {
       "tier": "provincial",
-      "rank": "二等奖",
+      "rank": "Second Prize",
       "name": "网络安全实战技能竞赛",
       "competition": "天津市滨海新区",
       "date": "2025-09"
     },
     {
       "tier": "national",
-      "rank": "三等奖",
+      "rank": "Third Prize",
       "name": "大数据安全分析竞赛",
       "competition": "DataCon 2024",
       "date": "2024-12"
     },
     {
       "tier": "school",
-      "rank": "校级奖学金",
+      "rank": "School Scholarship",
       "name": "2023-2024突出成绩奖学金",
       "competition": "中国石油大学（华东）",
       "date": "2024-12"
     },
     {
       "tier": "school",
-      "rank": "校级奖学金",
+      "rank": "School Scholarship",
       "name": "2023-2024卓越之星奖学金",
       "competition": "中国石油大学（华东）",
       "date": "2024-12"
     },
     {
       "tier": "national",
-      "rank": "国家奖学金",
+      "rank": "National Scholarship",
       "name": "荣获国家奖学金（￥10000, 2/120）",
       "competition": "中国石油大学（华东）",
       "date": "2024-11"
     },
     {
       "tier": "school",
-      "rank": "校级奖学金",
+      "rank": "University Scholarship",
       "name": "2023-2024年科技创新奖学金",
       "competition": "中国石油大学（华东）",
       "date": "2024-10"
     },
     {
       "tier": "national",
-      "rank": "国家三等奖",
+      "rank": "National Third Prize",
       "name": "基于多模态分析的心理健康群防教育系统",
       "competition": "中国高校计算机大赛-网络技术挑战赛（A1创意赛道）",
       "competitionLink": "https://net.c4best.cn/",
@@ -184,7 +185,7 @@ export const profileData: ProfileData = {
     },
     {
       "tier": "national",
-      "rank": "国家二等奖",
+      "rank": "National Second Prize",
       "name": "\"通慧智教\"——有温度，有感情的个性化教学平台",
       "projectLink": "https://www.bilibili.com/video/BV1UDWzeyEBB/",
       "competition": "第13届\"中国软件杯\"大学生软件设计大赛（A5赛道）",
@@ -193,7 +194,7 @@ export const profileData: ProfileData = {
     },
     {
       "tier": "national",
-      "rank": "国家一等奖",
+      "rank": "National First Prize",
       "name": "基于文心大模型的第二课堂智能数据分析平台",
       "projectLink": "https://www.bilibili.com/video/BV15MvLejEt5",
       "competition": "中国大学生计算机设计大赛（软件应用与开发赛道）",
@@ -210,7 +211,7 @@ export const profileData: ProfileData = {
     },
     {
       "tier": "provincial",
-      "rank": "山东省一等奖",
+      "rank": "Provincial First Prize",
       "name": "B题多波束测线问题",
       "competition": "全国大学生数学建模竞赛",
       "competitionLink": "http://www.mcm.edu.cn/",
@@ -218,7 +219,7 @@ export const profileData: ProfileData = {
     },
     {
       "tier": "national",
-      "rank": "国家三等奖",
+      "rank": "National Third Prize",
       "name": "深度学习风力发电实时预测系统",
       "projectLink": "https://www.bilibili.com/video/BV1kG411d7Zr/",
       "competition": "第13届\"中国软件杯\"大学生软件设计大赛",
@@ -227,13 +228,20 @@ export const profileData: ProfileData = {
     },
     {
       "tier": "provincial",
-      "rank": "华东赛区二等奖",
+      "rank": "East China Second Prize",
       "name": "SDN运维管理系统",
       "competition": "中国高校计算机大赛-网络技术挑战赛（BEP-4赛道）",
       "date": "2023-06"
     }
   ],
   "news": [
+    {
+      "tag": "publication",
+      "date": "2026-09-16",
+      "title": "CVE-2026-19668 获 ISC 官方致谢",
+      "descriptionLink": "https://kb.isc.org/docs/cve-2026-19668",
+      "description": "BIND 9 DNSSEC 处理资源耗尽漏洞，CVSS 3.1：5.3（中危）；与李想共同获 ISC 署名致谢。"
+    },
     {
       "tag": "publication",
       "date": "2026-09",
@@ -455,6 +463,13 @@ export const profileDataEn: ProfileData = {
     }
   ],
   "news": [
+    {
+      "tag": "publication",
+      "date": "2026-09-16",
+      "title": "ISC acknowledges CVE-2026-19668 report",
+      "descriptionLink": "https://kb.isc.org/docs/cve-2026-19668",
+      "description": "BIND 9 resource exhaustion through DNSSEC processing; CVSS 3.1: 5.3 (Medium). Jointly acknowledged by ISC with Xiang Li."
+    },
     {
       "tag": "publication",
       "date": "2026-09",

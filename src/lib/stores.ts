@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { profileData, profileDataEn, type ProfileData } from './data';
 
 function createLanguageStore() {
-  const { subscribe, set, update } = writable<'zh' | 'en'>('zh');
+  const { subscribe, set, update } = writable<'zh' | 'en'>('en');
 
   return {
     subscribe,
