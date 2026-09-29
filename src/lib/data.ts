@@ -15,6 +15,7 @@ export interface Publication {
   venue: string;
   year: number;
   link?: string;
+  resources?: { label: string; href: string }[];
   status: 'published' | 'preprint' | 'accepted' | 'poster';
   role?: string;
 }
@@ -55,7 +56,7 @@ export interface ProfileData {
   };
 }
 
-// Profile facts updated from archived materials on 2026-09-12.
+// Publication links verified against official sources on 2026-09-29.
 export const profileData: ProfileData = {
   "name": "许祖耀",
   "introduction": "我是许祖耀，南开大学网络空间安全专业硕士研究生，师从李想老师。我的研究兴趣包括 DNS 与互联网基础设施安全、互联网测量，以及大语言模型与智能体安全。",
@@ -81,11 +82,22 @@ export const profileData: ProfileData = {
   "publications": [
     {
       "title": "Ollama in the Wild: A Longitudinal Measurement of Exposed Ollama LLM Endpoints at Internet Scale",
-      "authors": "Zuyao Xu et al.",
+      "authors": "Zuyao Xu, Xiang Li, Yuqi Qiu, Lu Sun",
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "第一作者"
+      "role": "第一作者",
+      "link": "https://arxiv.org/abs/2609.07115",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2609.07115"
+        },
+        {
+          "label": "DOI",
+          "href": "https://doi.org/10.1145/3777912.3839823"
+        }
+      ]
     },
     {
       "title": "GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models",
@@ -94,7 +106,17 @@ export const profileData: ProfileData = {
       "year": 2026,
       "link": "https://arxiv.org/abs/2602.06718",
       "status": "poster",
-      "role": "共同第一作者（第一顺位）"
+      "role": "共同第一作者（第一顺位）",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2602.06718"
+        },
+        {
+          "label": "Poster PDF",
+          "href": "https://sp2026.ieee-security.org/downloads/posters/sp2026posters-final61.pdf"
+        }
+      ]
     },
     {
       "title": "Agent Transfer Protocol: Server-Mediated Authentication and Messaging for Agent-to-Agent Communication",
@@ -102,7 +124,23 @@ export const profileData: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "共同第一作者（第三顺位）"
+      "role": "共同第一作者（第三顺位）",
+      "link": "https://doi.org/10.1145/3777912.3847607"
+    },
+    {
+      "title": "CAIRN: Dynamic Fact-Intent DAGs for Multi-Agent Exploration",
+      "authors": "Zuyao Xu, Yuyang Jia, Junwei Guan, Xiang Li, Kaiwen Shen, Zhiqiang Dong",
+      "venue": "arXiv",
+      "year": 2026,
+      "link": "https://arxiv.org/abs/2609.32700",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2609.32700"
+        }
+      ],
+      "status": "preprint",
+      "role": "共同第一作者（第一顺位）"
     },
     {
       "title": "aCAPTCHA: Verifying That an Entity Is a Capable Agent via Asymmetric Hardness",
@@ -110,7 +148,13 @@ export const profileData: ProfileData = {
       "venue": "arXiv",
       "year": 2026,
       "link": "https://arxiv.org/abs/2603.07116",
-      "status": "preprint"
+      "status": "preprint",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2603.07116"
+        }
+      ]
     },
     {
       "title": "RebirthDay Attack: Reviving DNS Cache Poisoning with the Birthday Paradox",
@@ -119,7 +163,13 @@ export const profileData: ProfileData = {
       "year": 2025,
       "link": "https://doi.org/10.1145/3719027.3744832",
       "status": "published",
-      "role": "第三作者"
+      "role": "第三作者",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://lixiang521.com/publication/ccs25/ccs2025-rebirthday-li.pdf"
+        }
+      ]
     }
   ],
   "awards": [
@@ -250,13 +300,15 @@ export const profileData: ProfileData = {
       "tag": "publication",
       "date": "2026-09",
       "title": "ATP 获 IMC 2026 Poster 录用",
-      "description": "智能体间认证与消息通信协议，共同第一作者（第三顺位）。"
+      "description": "智能体间认证与消息通信协议，共同第一作者（第三顺位）。",
+      "titleLink": "https://doi.org/10.1145/3777912.3847607"
     },
     {
       "tag": "publication",
       "date": "2026-08",
       "title": "Ollama in the Wild 获 IMC 2026 录用",
-      "description": "开放 Ollama 端点的长期互联网测量，第一作者。"
+      "description": "开放 Ollama 端点的长期互联网测量，第一作者。",
+      "titleLink": "https://arxiv.org/abs/2609.07115"
     },
     {
       "tag": "activity",
@@ -282,13 +334,15 @@ export const profileData: ProfileData = {
       "tag": "publication",
       "date": "2026-04",
       "title": "GhostCite 获 IEEE S&P 2026 Poster 录用",
-      "description": "共同第一作者（第一顺位）。"
+      "description": "共同第一作者（第一顺位）。",
+      "titleLink": "https://sp2026.ieee-security.org/posters.html#collapse-26"
     },
     {
       "tag": "award",
       "date": "2025-12",
       "title": "XMap 获 ACSAC 2025 成果影响力奖第二名",
-      "description": "Fast Internet-wide IPv4 and IPv6 Network Scanner。"
+      "description": "Fast Internet-wide IPv4 and IPv6 Network Scanner。",
+      "titleLink": "https://arxiv.org/abs/2602.09333"
     },
     {
       "tag": "publication",
@@ -325,11 +379,22 @@ export const profileDataEn: ProfileData = {
   "publications": [
     {
       "title": "Ollama in the Wild: A Longitudinal Measurement of Exposed Ollama LLM Endpoints at Internet Scale",
-      "authors": "Zuyao Xu et al.",
+      "authors": "Zuyao Xu, Xiang Li, Yuqi Qiu, Lu Sun",
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "First author"
+      "role": "First author",
+      "link": "https://arxiv.org/abs/2609.07115",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2609.07115"
+        },
+        {
+          "label": "DOI",
+          "href": "https://doi.org/10.1145/3777912.3839823"
+        }
+      ]
     },
     {
       "title": "GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models",
@@ -338,7 +403,17 @@ export const profileDataEn: ProfileData = {
       "year": 2026,
       "link": "https://arxiv.org/abs/2602.06718",
       "status": "poster",
-      "role": "Equal contribution · first listed"
+      "role": "Equal contribution · first listed",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2602.06718"
+        },
+        {
+          "label": "Poster PDF",
+          "href": "https://sp2026.ieee-security.org/downloads/posters/sp2026posters-final61.pdf"
+        }
+      ]
     },
     {
       "title": "Agent Transfer Protocol: Server-Mediated Authentication and Messaging for Agent-to-Agent Communication",
@@ -346,7 +421,23 @@ export const profileDataEn: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "Co-first author · third listed"
+      "role": "Co-first author · third listed",
+      "link": "https://doi.org/10.1145/3777912.3847607"
+    },
+    {
+      "title": "CAIRN: Dynamic Fact-Intent DAGs for Multi-Agent Exploration",
+      "authors": "Zuyao Xu, Yuyang Jia, Junwei Guan, Xiang Li, Kaiwen Shen, Zhiqiang Dong",
+      "venue": "arXiv",
+      "year": 2026,
+      "link": "https://arxiv.org/abs/2609.32700",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2609.32700"
+        }
+      ],
+      "status": "preprint",
+      "role": "Equal contribution · first listed"
     },
     {
       "title": "aCAPTCHA: Verifying That an Entity Is a Capable Agent via Asymmetric Hardness",
@@ -354,7 +445,13 @@ export const profileDataEn: ProfileData = {
       "venue": "arXiv",
       "year": 2026,
       "link": "https://arxiv.org/abs/2603.07116",
-      "status": "preprint"
+      "status": "preprint",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2603.07116"
+        }
+      ]
     },
     {
       "title": "RebirthDay Attack: Reviving DNS Cache Poisoning with the Birthday Paradox",
@@ -363,7 +460,13 @@ export const profileDataEn: ProfileData = {
       "year": 2025,
       "link": "https://doi.org/10.1145/3719027.3744832",
       "status": "published",
-      "role": "Third author"
+      "role": "Third author",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://lixiang521.com/publication/ccs25/ccs2025-rebirthday-li.pdf"
+        }
+      ]
     }
   ],
   "awards": [
@@ -494,13 +597,15 @@ export const profileDataEn: ProfileData = {
       "tag": "publication",
       "date": "2026-09",
       "title": "ATP accepted to IMC 2026 Posters",
-      "description": "Agent-to-agent authentication and messaging; co-first author, third listed."
+      "description": "Agent-to-agent authentication and messaging; co-first author, third listed.",
+      "titleLink": "https://doi.org/10.1145/3777912.3847607"
     },
     {
       "tag": "publication",
       "date": "2026-08",
       "title": "Ollama in the Wild accepted to IMC 2026",
-      "description": "Longitudinal Internet measurement; first author."
+      "description": "Longitudinal Internet measurement; first author.",
+      "titleLink": "https://arxiv.org/abs/2609.07115"
     },
     {
       "tag": "activity",
@@ -526,13 +631,15 @@ export const profileDataEn: ProfileData = {
       "tag": "publication",
       "date": "2026-04",
       "title": "GhostCite accepted to IEEE S&P 2026 Posters",
-      "description": "Equal contribution, first listed."
+      "description": "Equal contribution, first listed.",
+      "titleLink": "https://sp2026.ieee-security.org/posters.html#collapse-26"
     },
     {
       "tag": "award",
       "date": "2025-12",
       "title": "XMap receives ACSAC 2025 Artifacts Impact Award, 2nd place",
-      "description": "Fast Internet-wide IPv4 and IPv6 Network Scanner."
+      "description": "Fast Internet-wide IPv4 and IPv6 Network Scanner.",
+      "titleLink": "https://arxiv.org/abs/2602.09333"
     },
     {
       "tag": "publication",
