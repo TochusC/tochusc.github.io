@@ -30,6 +30,7 @@ export interface NewsItem {
 
 export interface ProfileData {
   name: string;
+  introduction: string;
   school: string;
   undergraduate: string;
   undergraduateMajor: string;
@@ -56,6 +57,7 @@ export interface ProfileData {
 // Profile facts updated from archived materials on 2026-09-12.
 export const profileData: ProfileData = {
   "name": "许祖耀",
+  "introduction": "我是许祖耀，南开大学网络空间安全专业硕士研究生，师从李想老师。我的研究兴趣包括 DNS 与互联网基础设施安全、互联网测量，以及大语言模型与智能体安全。",
   "school": "南开大学",
   "undergraduate": "中国石油大学（华东）",
   "undergraduateMajor": "计算机科学与技术",
@@ -255,10 +257,24 @@ export const profileData: ProfileData = {
       "description": "开放 Ollama 端点的长期互联网测量，第一作者。"
     },
     {
+      "tag": "activity",
+      "date": "2026-07",
+      "title": "参加 IETF 126 Hackathon",
+      "description": "7 月 18–19 日在维也纳参加 ATP 演示项目，围绕智能体间认证与消息通信开展实践。",
+      "descriptionLink": "https://wiki.ietf.org/en/meeting/126/hackathon#demo-of-agent-transfer-protocol-server-mediated-messaging-for-the-internet-of-agents"
+    },
+    {
       "tag": "publication",
       "date": "2026-07",
       "title": "GhostCite 与 ATP 获 CCF-NSS Poster 录用",
       "description": "围绕引用可信性与智能体通信开展研究。"
+    },
+    {
+      "tag": "publication",
+      "date": "2026-06",
+      "title": "共同撰写 ATP Internet-Draft",
+      "description": "个人草案 draft-li-atp-02，提出基于 DNS 的服务发现、身份认证与智能体消息通信机制。",
+      "descriptionLink": "https://datatracker.ietf.org/doc/draft-li-atp/02/"
     },
     {
       "tag": "publication",
@@ -284,6 +300,7 @@ export const profileData: ProfileData = {
 
 export const profileDataEn: ProfileData = {
   "name": "Zuyao Xu",
+  "introduction": "I am Zuyao Xu, a master’s student in Cybersecurity at Nankai University, advised by Xiang Li. My research interests include DNS and Internet infrastructure security, Internet measurement, and the security of large language models and AI agents.",
   "school": "Nankai University",
   "undergraduate": "China University of Petroleum (East China)",
   "undergraduateMajor": "Computer Science and Technology",
@@ -483,10 +500,24 @@ export const profileDataEn: ProfileData = {
       "description": "Longitudinal Internet measurement; first author."
     },
     {
+      "tag": "activity",
+      "date": "2026-07",
+      "title": "Participated in IETF 126 Hackathon",
+      "description": "Joined the ATP demo project in Vienna on July 18–19, exploring authentication and messaging between autonomous agents.",
+      "descriptionLink": "https://wiki.ietf.org/en/meeting/126/hackathon#demo-of-agent-transfer-protocol-server-mediated-messaging-for-the-internet-of-agents"
+    },
+    {
       "tag": "publication",
       "date": "2026-07",
       "title": "GhostCite and ATP accepted to CCF-NSS Posters",
       "description": "Research on citation validity and agent communication."
+    },
+    {
+      "tag": "publication",
+      "date": "2026-06",
+      "title": "Co-authored the ATP Internet-Draft",
+      "description": "Individual Internet-Draft draft-li-atp-02 proposes DNS-based service discovery, authentication, and messaging for autonomous agents.",
+      "descriptionLink": "https://datatracker.ietf.org/doc/draft-li-atp/02/"
     },
     {
       "tag": "publication",

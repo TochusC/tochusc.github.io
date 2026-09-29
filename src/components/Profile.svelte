@@ -5,7 +5,7 @@
   import * as Card from './ui/card';
   import * as Tabs from './ui/tabs';
   import { Badge } from './ui/badge';
-  import { ArrowUpRight, Download, Github, Languages, Mail, Moon, Sun, ShieldCheck } from 'lucide-svelte';
+  import { ArrowUpRight, Download, Github, Globe, Languages, Mail, Moon, Sun, ShieldCheck } from 'lucide-svelte';
   import PublicationList from './PublicationList.svelte';
   import AwardList from './AwardList.svelte';
   import NewsList from './NewsList.svelte';
@@ -54,6 +54,7 @@
         <a class={buttonVariants({variant:'outline',size:'sm', class: 'px-2 text-xs sm:px-3 sm:text-sm'})} href={data.social.github} target="_blank" rel="noreferrer"><Github class="mr-2 h-4 w-4" />GitHub</a>
         <a class={buttonVariants({variant:'ghost',size:'sm', class: 'px-2 text-xs sm:px-3 sm:text-sm'})} href={data.social.scholar} target="_blank" rel="noreferrer">Google Scholar<ArrowUpRight class="ml-1 h-4 w-4" /></a>
       </div>
+      <p class="col-span-2 max-w-5xl text-sm leading-7 text-muted-foreground">{data.introduction}</p>
     </section>
 
     <div class="profile-workspace grid gap-6">
@@ -92,6 +93,23 @@
       <!-- The scrollable region needs keyboard focus for arrow/PageDown scrolling. -->
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div class="profile-details scroll-region min-w-0 space-y-6" role="region" aria-label={zh ? '技术成果与服务' : 'Artifacts and service'} tabindex={0}>
+        <section aria-labelledby="ietf-title">
+          <h2 id="ietf-title" class="mb-4 flex items-center gap-2 text-base font-semibold"><Globe size={18} />{zh ? 'IETF 与协议实践' : 'IETF & Protocol Work'}</h2>
+          <div class="rounded-lg border p-4">
+            <article>
+              <Badge lang="en">IETF Internet-Draft</Badge>
+              <h3 class="mt-3 text-sm font-semibold leading-6"><a href="https://datatracker.ietf.org/doc/html/draft-li-atp-02" target="_blank" rel="noreferrer" class="hover:underline underline-offset-4">draft-li-atp-02<ArrowUpRight class="ml-1 inline h-4 w-4" /></a></h3>
+              <p class="mt-1 text-xs text-muted-foreground">{zh ? '共同作者' : 'Co-author'} · <time datetime="2026-06">{zh ? '2026 年 6 月' : 'June 2026'}</time></p>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">{zh ? 'Agent Transfer Protocol（ATP）个人草案，涵盖基于 DNS 的智能体发现、身份认证与消息通信。' : 'An individual Internet-Draft for Agent Transfer Protocol (ATP): DNS-based agent discovery, authentication, and messaging.'}</p>
+            </article>
+            <article class="mt-4 border-t pt-4">
+              <Badge lang="en">IETF 126 Hackathon</Badge>
+              <h3 class="mt-3 text-sm font-semibold leading-6"><a href="https://wiki.ietf.org/en/meeting/126/hackathon#demo-of-agent-transfer-protocol-server-mediated-messaging-for-the-internet-of-agents" target="_blank" rel="noreferrer" class="hover:underline underline-offset-4">{zh ? 'ATP 互通演示' : 'ATP interoperability demo'}<ArrowUpRight class="ml-1 inline h-4 w-4" /></a></h3>
+              <p class="mt-1 text-xs text-muted-foreground">{zh ? '奥地利 · 维也纳' : 'Vienna, Austria'} · <time datetime="2026-07">{zh ? '2026 年 7 月' : 'July 2026'}</time></p>
+              <p class="mt-2 text-sm leading-6 text-muted-foreground">{zh ? '参加 IETF 126 Hackathon，作为 ATP 演示项目成员参与智能体通信协议实践。' : 'Participated in IETF 126 Hackathon as a member of the ATP demonstration team.'}</p>
+            </article>
+          </div>
+        </section>
         <section aria-labelledby="security-title">
           <h2 id="security-title" class="mb-4 flex items-center gap-2 text-base font-semibold"><ShieldCheck size={18} />{zh ? '漏洞与技术成果' : 'Vulnerabilities & artifacts'}</h2>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
@@ -116,7 +134,6 @@
           <div class="space-y-5 text-sm">
             <div class="flex flex-col gap-1 xl:flex-row xl:justify-between"><div><p class="font-medium">{zh ? '南开大学信息安全协会社长' : 'President, Nankai Information Security Association'}</p><p class="mt-1 leading-6 text-muted-foreground">{zh ? '组织社团建设、技术交流和竞赛实践，服务成员成长。' : 'Association coordination, technical exchange, and competition practice.'}</p></div><span class="shrink-0 text-xs text-muted-foreground">2025 — 2026</span></div>
             <div class="flex flex-col gap-1 xl:flex-row xl:justify-between"><div><p class="font-medium">{zh ? '密码学会议与竞赛志愿服务' : 'Volunteer service in cryptography'}</p><p class="mt-1 leading-6 text-muted-foreground">{zh ? '中国密码学年会 8 小时；全国密码学技术竞赛决赛 3 小时。' : 'Chinese cryptography annual conference: 8 hours; national cryptography competition finals: 3 hours.'}</p></div><span class="shrink-0 text-xs text-muted-foreground">2025.11</span></div>
-            <div class="flex flex-col gap-1 xl:flex-row xl:justify-between"><div><p class="font-medium">IETF 126 Hackathon · Agent Transfer Protocol</p><p class="mt-1 leading-6 text-muted-foreground">{zh ? 'ATP 演示项目成员，参与智能体通信协议实践。' : 'Listed as a champion of the ATP interoperability demonstration.'} <a class="underline underline-offset-4" href="https://wiki.ietf.org/en/meeting/126/hackathon" target="_blank" rel="noreferrer">{zh ? '项目页面' : 'Project page'}</a></p></div><span class="shrink-0 text-xs text-muted-foreground">2026.07</span></div>
           </div>
         </section>
       </div>
