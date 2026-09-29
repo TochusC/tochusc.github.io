@@ -32,7 +32,7 @@ npm run preview
 - `src/components/Profile.svelte`：主页结构、技术成果、学生工作及双语介绍。
 - `src/styles/global.css`：shadcn 默认黑白主题变量。
 - `src/components/ui/`：可编辑的 shadcn-svelte 组件；来源和许可证见 `SHADCN.md` 及目录内许可证。
-- `public/resume-zh.pdf`、`public/resume-en.pdf`：公开下载的中英文简历；更新简历后同步替换。
+- `public/resume_zuyao_ch.pdf`、`public/resume_zuyao_en.pdf`：公开下载的中英文简历；页面按所选语言下载对应版本，更新简历后同步替换。
 
 2026-09-12 更新：补充 IMC 2026 录用成果、GhostCite / ATP Poster、CVE-2025-8677、CNVD 证明、XMap 获奖和近期竞赛经历。论文条目标明正式论文、Poster 或预印本状态。
 

@@ -59,7 +59,7 @@ export interface ProfileData {
 // Publication links verified against official sources on 2026-09-29.
 export const profileData: ProfileData = {
   "name": "许祖耀",
-  "introduction": "我是许祖耀，南开大学网络空间安全专业硕士研究生，师从李想老师。我的研究兴趣包括 DNS 与互联网基础设施安全、互联网测量，以及大语言模型与智能体安全。",
+  "introduction": "我是许祖耀，南开大学网络空间安全专业硕士研究生，师从李想老师。我的研究聚焦 DNS 与互联网基础设施安全、互联网测量，以及大语言模型与智能体安全。",
   "school": "南开大学",
   "undergraduate": "中国石油大学（华东）",
   "undergraduateMajor": "计算机科学与技术",
@@ -356,7 +356,7 @@ export const profileData: ProfileData = {
 
 export const profileDataEn: ProfileData = {
   "name": "Zuyao Xu",
-  "introduction": "I am Zuyao Xu, a master’s student in Cybersecurity at Nankai University, advised by Xiang Li. My research interests include DNS and Internet infrastructure security, Internet measurement, and the security of large language models and AI agents.",
+  "introduction": "I am Zuyao Xu, a master’s student in Cybersecurity at Nankai University, advised by Xiang Li. My research focuses on DNS and Internet infrastructure security, Internet measurement, and LLM and agent security.",
   "school": "Nankai University",
   "undergraduate": "China University of Petroleum (East China)",
   "undergraduateMajor": "Computer Science and Technology",

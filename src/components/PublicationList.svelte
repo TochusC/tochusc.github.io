@@ -14,8 +14,8 @@
   {#each publications as p}
     <article class="py-6 first:pt-0 last:pb-0">
       <div lang="en" class="mb-3 flex flex-wrap items-center gap-2">
-        {#each p.venue.split(' · ') as venue}
-          <Badge>{venue}</Badge>
+        {#each p.venue.split(' · ') as venue, index}
+          <Badge variant={index === 0 && p.status !== 'preprint' ? 'default' : 'secondary'}>{venue}</Badge>
         {/each}
         <span class="text-xs text-muted-foreground">{labels[p.status]}</span>
       </div>
