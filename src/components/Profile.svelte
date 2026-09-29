@@ -44,7 +44,7 @@
     <section aria-labelledby="profile-name" class="profile-hero mb-6 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-4 sm:gap-x-6">
       <img src="/portrait-suit-autolevel.png" alt={zh ? '许祖耀' : 'Zuyao Xu'} width="1122" height="1402" class="h-28 w-auto rounded-md border object-contain min-[375px]:h-32 sm:row-span-2 sm:h-40 sm:self-center" />
       <div class="flex min-w-0 max-w-2xl flex-col">
-        <div lang="en" class="mt-2 flex flex-wrap gap-1.5 sm:mb-3 sm:mt-0 sm:gap-2"><Badge variant="secondary" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Nankai University</Badge><Badge variant="outline" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Cybersecurity · Master’s student</Badge></div>
+        <div lang="en" class="mt-2 flex flex-wrap gap-1.5 sm:mb-3 sm:mt-0 sm:gap-2"><Badge variant="secondary" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Nankai University</Badge><Badge variant="outline" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Cybersecurity · Master’s student</Badge><Badge variant="outline" class="px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">INFJ</Badge></div>
         <h1 id="profile-name" class="order-first text-2xl font-semibold leading-tight tracking-tight sm:order-none sm:text-4xl">{data.name}<span class="mt-1 block text-sm font-normal text-muted-foreground sm:ml-2 sm:mt-0 sm:inline-block sm:text-2xl">{zh ? 'Zuyao Xu' : '许祖耀'}</span></h1>
         <p class="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-muted-foreground sm:mt-3 sm:text-sm"><span>{data.advisorHeader} <a href={data.advisorLink} class="font-medium text-foreground underline underline-offset-4" target="_blank" rel="noreferrer">{data.advisor}</a></span><span class="hidden sm:inline" aria-hidden="true">·</span><span class="basis-full sm:basis-auto">{zh ? '中国 · 天津' : 'Tianjin, China'}</span></p>
       </div>
@@ -72,7 +72,11 @@
           <Card.Header class="pb-4"><Card.Title tag="h2" class="text-sm">{zh ? '研究方向' : 'Research interests'}</Card.Title></Card.Header>
           <Card.Content lang="en" class="flex flex-wrap gap-2"><Badge variant="secondary">DNS Security</Badge><Badge variant="secondary">Internet Measurement</Badge><Badge variant="secondary">LLM & Agent Security</Badge></Card.Content>
         </Card.Root>
-        <div class="px-1 text-sm leading-7 text-muted-foreground"><a class="mt-2 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.bilibili} target="_blank" rel="noreferrer">{zh ? '竞赛与项目分享' : 'Projects & competition videos'}<ArrowUpRight size={14} class="ml-1" /></a><a class="ml-3 inline-flex items-center text-foreground underline underline-offset-4" href={data.social.twitter} target="_blank" rel="noreferrer">X<ArrowUpRight size={14} class="ml-1" /></a></div>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-sm leading-7 text-muted-foreground">
+          <a class="inline-flex items-center text-foreground underline underline-offset-4" href={data.social.bilibili} target="_blank" rel="noreferrer">{zh ? '竞赛与项目分享' : 'Projects & competition videos'}<ArrowUpRight size={14} class="ml-1" /></a>
+          <a class="inline-flex items-center text-foreground underline underline-offset-4" href={data.social.twitter} target="_blank" rel="noreferrer">X<ArrowUpRight size={14} class="ml-1" /></a>
+          <a class="inline-flex items-center text-foreground underline underline-offset-4" href={data.social.xiaohongshu} target="_blank" rel="noreferrer">{zh ? '小红书' : 'Xiaohongshu'}<ArrowUpRight size={14} class="ml-1" /></a>
+        </div>
       </aside>
 
       <div class="profile-results min-w-0 rounded-lg border p-4 sm:p-5">

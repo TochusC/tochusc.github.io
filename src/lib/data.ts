@@ -49,6 +49,7 @@ export interface ProfileData {
     github: string;
     email: string;
     twitter: string;
+    xiaohongshu: string;
     bilibili: string;
     scholar: string;
   };
@@ -73,6 +74,7 @@ export const profileData: ProfileData = {
     "github": "https://github.com/tochusc",
     "email": "mailto:xuzuyao@mail.nankai.edu.cn",
     "twitter": "https://x.com/xu_zu_yao",
+    "xiaohongshu": "https://www.xiaohongshu.com/user/profile/61c9e9da000000001000629a",
     "bilibili": "https://space.bilibili.com/10478211",
     "scholar": "https://scholar.google.com/citations?user=Q1bu9LoAAAAJ&hl=en"
   },
@@ -316,6 +318,7 @@ export const profileDataEn: ProfileData = {
     "github": "https://github.com/tochusc",
     "email": "mailto:xuzuyao@mail.nankai.edu.cn",
     "twitter": "https://x.com/xu_zu_yao",
+    "xiaohongshu": "https://www.xiaohongshu.com/user/profile/61c9e9da000000001000629a",
     "bilibili": "https://space.bilibili.com/10478211",
     "scholar": "https://scholar.google.com/citations?user=Q1bu9LoAAAAJ&hl=en"
   },
