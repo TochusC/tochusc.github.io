@@ -42,7 +42,7 @@
 
   <main id="main" class="profile-main py-6">
     <section aria-labelledby="profile-name" class="profile-hero mb-6 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-4 sm:gap-x-6">
-      <img src="/portrait-shirt-blue.png" alt={zh ? '许祖耀' : 'Zuyao Xu'} width="1122" height="1402" class="h-28 w-auto rounded-md border object-contain min-[375px]:h-32 sm:row-span-2 sm:h-40 sm:self-center" />
+      <img src="/portrait-suit-autolevel.png" alt={zh ? '许祖耀' : 'Zuyao Xu'} width="1122" height="1402" class="h-28 w-auto rounded-md border object-contain min-[375px]:h-32 sm:row-span-2 sm:h-40 sm:self-center" />
       <div class="flex min-w-0 max-w-2xl flex-col">
         <div lang="en" class="mt-2 flex flex-wrap gap-1.5 sm:mb-3 sm:mt-0 sm:gap-2"><Badge variant="secondary" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Nankai University</Badge><Badge variant="outline" class="max-w-full px-2 text-[10px] leading-4 sm:px-2.5 sm:text-xs">Cybersecurity · Master’s student</Badge></div>
         <h1 id="profile-name" class="order-first text-2xl font-semibold leading-tight tracking-tight sm:order-none sm:text-4xl">{data.name}<span class="mt-1 block text-sm font-normal text-muted-foreground sm:ml-2 sm:mt-0 sm:inline-block sm:text-2xl">{zh ? 'Zuyao Xu' : '许祖耀'}</span></h1>
