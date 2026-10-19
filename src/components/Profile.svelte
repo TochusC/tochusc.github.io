@@ -16,9 +16,38 @@
   $: data = getProfileData($language);
   let dark = false;
   let tab = 'publications';
+  let sidebar: HTMLElement;
+  let details: HTMLDivElement;
+  let results: HTMLDivElement;
+  let sidebarHeight = 0;
+  let detailsHeight = 0;
+  let resultsHeight = 0;
+  let workspaceStart = 0;
+  let detailsStart = 0;
   onMount(() => {
     try { dark = localStorage.getItem('theme') === 'dark'; } catch {}
     document.documentElement.classList.toggle('dark', dark);
+
+    // Each column stops when its end is visible, without adding a scroll area.
+    const measureSidebars = () => {
+      sidebarHeight = sidebar.getBoundingClientRect().height;
+      detailsHeight = details.getBoundingClientRect().height;
+      resultsHeight = results.getBoundingClientRect().height;
+      workspaceStart = sidebar.parentElement!.getBoundingClientRect().top + window.scrollY;
+      const main = details.parentElement!;
+      detailsStart = main.getBoundingClientRect().top + window.scrollY + parseFloat(getComputedStyle(main).paddingTop);
+    };
+    measureSidebars();
+    const observer = new ResizeObserver(measureSidebars);
+    observer.observe(sidebar);
+    observer.observe(details);
+    observer.observe(results);
+    observer.observe(sidebar.parentElement!);
+    window.addEventListener('resize', measureSidebars);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measureSidebars);
+    };
   });
   $: if (typeof document !== 'undefined') document.documentElement.lang = zh ? 'zh-CN' : 'en';
   function toggleTheme() {
@@ -40,8 +69,7 @@
     </div>
   </header>
 
-  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <main id="main" class="profile-main scroll-region py-6" tabindex={0}>
+  <main id="main" class="profile-main py-6">
     <div class="profile-primary min-w-0">
     <section aria-labelledby="profile-name" class="profile-hero mb-6 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-4 sm:gap-x-6">
       <img src="/portrait-suit-autolevel.png" alt={zh ? '许祖耀' : 'Zuyao Xu'} width="1122" height="1402" class="h-28 w-auto rounded-md border object-contain min-[375px]:h-32 sm:row-span-2 sm:h-40 sm:self-center" />
@@ -60,9 +88,7 @@
     </section>
 
     <div class="profile-workspace grid gap-6">
-      <!-- The scrollable region needs keyboard focus for arrow/PageDown scrolling. -->
-      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <aside class="profile-sidebar scroll-region space-y-5" aria-label={zh ? '教育与研究方向' : 'Education and research interests'} tabindex={0}>
+      <aside bind:this={sidebar} style={`--column-height: ${sidebarHeight}px; --column-start: ${workspaceStart}px`} class="profile-sidebar space-y-5" aria-label={zh ? '教育与研究方向' : 'Education and research interests'}>
         <Card.Root>
           <Card.Header class="p-4 pb-3"><Card.Title tag="h2" class="flex items-center gap-2 text-sm leading-6 text-primary"><GraduationCap size={18} class="shrink-0" aria-hidden="true" />{zh ? '教育背景' : 'Education'}</Card.Title></Card.Header>
           <Card.Content class="space-y-5 p-4 pt-0 text-sm">
@@ -90,26 +116,24 @@
         </div>
       </aside>
 
-      <div class="profile-results min-w-0 rounded-lg border p-4 sm:p-5">
+      <div bind:this={results} style={`--column-height: ${resultsHeight}px; --column-start: ${workspaceStart}px`} class="profile-results min-w-0 rounded-lg border p-4 sm:p-5">
         <Tabs.Root bind:value={tab} class="results-tabs">
           <Tabs.List lang="en" class="grid h-auto w-full grid-cols-4 p-1" aria-label="Profile sections">
-            <Tabs.Trigger value="publications" class="gap-1 px-1 py-2 text-xs sm:text-sm">Research<span class="text-xs opacity-60">{data.publications.length}</span></Tabs.Trigger>
-            <Tabs.Trigger value="awards" class="gap-1 px-1 py-2 text-xs sm:text-sm">Awards<span class="text-xs opacity-60">{data.awards.length}</span></Tabs.Trigger>
-            <Tabs.Trigger value="news" class="gap-1 px-1 py-2 text-xs sm:text-sm">News<span class="text-xs opacity-60">{data.news.length}</span></Tabs.Trigger>
-            <Tabs.Trigger value="projects" class="gap-1 px-1 py-2 text-xs sm:text-sm">Projects<span class="text-xs opacity-60">{projects.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="publications" aria-selected={tab === 'publications'} class="min-w-0 gap-0.5 px-0.5 py-2 text-[11px] min-[375px]:gap-1 min-[375px]:px-1 min-[375px]:text-xs sm:text-sm">Research<span class="text-[10px] opacity-60 min-[375px]:text-xs">{data.publications.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="awards" aria-selected={tab === 'awards'} class="min-w-0 gap-0.5 px-0.5 py-2 text-[11px] min-[375px]:gap-1 min-[375px]:px-1 min-[375px]:text-xs sm:text-sm">Awards<span class="text-[10px] opacity-60 min-[375px]:text-xs">{data.awards.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="news" aria-selected={tab === 'news'} class="min-w-0 gap-0.5 px-0.5 py-2 text-[11px] min-[375px]:gap-1 min-[375px]:px-1 min-[375px]:text-xs sm:text-sm">News<span class="text-[10px] opacity-60 min-[375px]:text-xs">{data.news.length}</span></Tabs.Trigger>
+            <Tabs.Trigger value="projects" aria-selected={tab === 'projects'} class="min-w-0 gap-0.5 px-0.5 py-2 text-[11px] min-[375px]:gap-1 min-[375px]:px-1 min-[375px]:text-xs sm:text-sm">Projects<span class="text-[10px] opacity-60 min-[375px]:text-xs">{projects.length}</span></Tabs.Trigger>
           </Tabs.List>
-          <Tabs.Content value="publications" class="results-content scroll-region mt-4" tabindex={0}><PublicationList publications={data.publications} /></Tabs.Content>
-          <Tabs.Content value="awards" class="results-content scroll-region mt-4" tabindex={0}><AwardList awards={data.awards} /></Tabs.Content>
-          <Tabs.Content value="news" class="results-content scroll-region mt-4" tabindex={0}><NewsList news={data.news} /></Tabs.Content>
-          <Tabs.Content value="projects" class="results-content scroll-region mt-4" tabindex={0}><ProjectList /></Tabs.Content>
+          <Tabs.Content value="publications" class="results-content mt-4"><PublicationList publications={data.publications} /></Tabs.Content>
+          <Tabs.Content value="awards" class="results-content mt-4"><AwardList awards={data.awards} /></Tabs.Content>
+          <Tabs.Content value="news" class="results-content mt-4"><NewsList news={data.news} /></Tabs.Content>
+          <Tabs.Content value="projects" class="results-content mt-4"><ProjectList /></Tabs.Content>
         </Tabs.Root>
       </div>
     </div>
     </div>
 
-      <!-- The scrollable region needs keyboard focus for arrow/PageDown scrolling. -->
-      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-      <div class="profile-details scroll-region mt-6 min-w-0 space-y-6 lg:mt-0" role="region" aria-label={zh ? '技术成果与服务' : 'Artifacts and service'} tabindex={0}>
+      <div bind:this={details} style={`--column-height: ${detailsHeight}px; --column-start: ${detailsStart}px`} class="profile-details mt-6 min-w-0 space-y-6 lg:mt-0" role="region" aria-label={zh ? '技术成果与服务' : 'Artifacts and service'}>
         <section aria-labelledby="ietf-title">
           <h2 id="ietf-title" class="section-divider mb-4 text-base font-semibold"><span class="section-divider-label"><Globe size={18} class="shrink-0" aria-hidden="true" /><span>{zh ? 'IETF 与协议实践' : 'IETF & Protocol Work'}</span></span></h2>
           <div class="rounded-lg border p-4">
@@ -176,34 +200,27 @@
 </div>
 
 <style>
-  .profile-shell { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
-  .profile-header { flex-shrink: 0; }
-  .profile-main { flex: 1; min-height: 0; overflow-y: auto; }
   .section-divider { display: flex; align-items: center; gap: 0.75rem; }
   .section-divider::after { content: ''; height: 1px; min-width: 0.75rem; flex: 1; background: hsl(var(--border)); }
   .section-divider-label { display: flex; align-items: center; gap: 0.5rem; min-width: 0; text-align: left; }
-  .profile-results { height: clamp(320px, 62dvh, 740px); }
-  .profile-results :global(.results-tabs) { display: flex; flex-direction: column; height: 100%; min-height: 0; }
-  .profile-results :global([role="tablist"]) { flex-shrink: 0; }
-  .profile-results :global(.results-content) { flex: 1; min-height: 0; overflow-y: auto; padding-right: 0.5rem; }
-  .profile-results :global(.results-content[data-state="inactive"]) { display: none; }
-  .profile-shell :global(.scroll-region) { scrollbar-width: thin; scrollbar-color: hsl(var(--border)) transparent; scrollbar-gutter: stable; overscroll-behavior-y: contain; }
-  .profile-shell :global(.scroll-region::-webkit-scrollbar) { width: 6px; }
-  .profile-shell :global(.scroll-region::-webkit-scrollbar-thumb) { background: hsl(var(--border)); border-radius: 999px; }
   @media (min-width: 1024px) {
-    .profile-shell .profile-main { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.8fr) minmax(0, 1fr); gap: 1.5rem; overflow: hidden; scrollbar-gutter: auto; }
-    .profile-primary { grid-column: span 2; display: flex; flex-direction: column; min-height: 0; overflow: clip; }
-    .profile-hero { flex-shrink: 0; }
-    .profile-workspace { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.8fr); flex: 1; min-height: 0; }
-    .profile-results { height: 100%; min-height: 0; }
-    .profile-sidebar, .profile-details { min-height: 0; overflow-y: auto; padding-right: 0.5rem; }
-  }
-  @media (min-width: 1024px) and (max-height: 700px) {
-    .profile-header { min-height: 3rem; }
-    .profile-main { padding-block: 0.75rem; }
-    .profile-hero { margin-bottom: 0.75rem; row-gap: 0.5rem; }
-    .profile-biography { line-height: 1.375rem; }
-    .profile-results { padding: 0.75rem; }
-    .profile-results :global(.results-content) { margin-top: 0.5rem; }
+    .profile-main { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.8fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+    .profile-primary { grid-column: span 2; align-self: stretch; display: flex; flex-direction: column; }
+    .profile-hero { flex: none; }
+    .profile-workspace { flex: 1; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.8fr); align-items: start; }
+    .profile-sidebar, .profile-details, .profile-results {
+      position: sticky;
+      align-self: start;
+      top: min(var(--column-start, 1.5rem), calc(100dvh - var(--column-height, 0px) - 1.5rem));
+    }
+    .profile-details > :global(section + section) { margin-top: 1.25rem; }
+    .profile-details :global(.section-divider) { margin-bottom: 0.75rem; }
+    .profile-details :global(.grid) { gap: 0.75rem; }
+    .profile-details :global(.p-4) { padding: 0.875rem; }
+    .profile-details :global(.pb-2) { padding-bottom: 0.5rem; }
+    .profile-details :global(.pt-0) { padding-top: 0; }
+    .profile-details :global(.leading-6) { line-height: 1.375rem; }
+    .profile-details :global(.mb-2) { margin-bottom: 0.25rem; }
+    .profile-details :global(.mt-3) { margin-top: 0.5rem; }
   }
 </style>
