@@ -41,3 +41,11 @@ npm run preview
 2026-10-10 布局更新：沿用原版黑白主题、1600px 三栏比例、头像介绍区、卡片、徽章、图标与标题分割线。取消单屏高度限制、各区域的独立滚动与短窗口压缩，由浏览器进行整页自然滚动。桌面三栏随整页滚动，各栏末尾到达视口底部后停留，较长的栏继续滚动；高度随内容、标签页、语言和窗口大小自动更新，页面始终只有一个滚动区域。Research / Awards / News / Projects 标签页保留，面板高度随内容展开；桌面 IETF 区初始位于右栏顶部，与头像区对齐，手机按原顺序纵向排列。头像使用 `public/portrait-suit-autolevel.png`，完整显示原比例。中英文简历分别对应 `resume_zuyao_ch.pdf` 与 `resume_zuyao_en.pdf`。
 
 开源项目：`src/lib/projects.ts` 维护精选项目、简介与 Star 数量；数字为标注日期的 GitHub API 快照。新增“开源”标签页，项目卡片链接至对应仓库。
+
+## 自定义域名
+
+主站地址为 `https://zuyaoxu.art/`，由 GitHub Pages 托管。仓库 Settings → Pages 的自定义域名设为 `zuyaoxu.art`，发布方式为 GitHub Actions，证书由 GitHub 自动管理；`www.zuyaoxu.art` 配置到同一站点后跳转到主地址。
+
+DNS 建议：根域名使用 GitHub Pages 官方 A 记录（`185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`）或支持的 ALIAS / ANAME；`www` 使用 CNAME 指向 `tochusc.github.io`。目前 DNS 服务商将根域名和 www 均配置为 CNAME 指向 `tochusc.github.io`。
+
+本项目使用自定义 Actions 发布；仓库内的 CNAME 文件不会代替 GitHub Pages 设置中的域名绑定。更新内容后推送 main，由 `.github/workflows/deploy.yml` 构建部署。此前准备的独立服务器部署文件仅保留在本地备用，不参与 GitHub Pages 部署。

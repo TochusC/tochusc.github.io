@@ -9,7 +9,7 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
   ],
   output: 'static',
-  site: 'https://tochusc.github.io',
+  site: 'https://zuyaoxu.art',
   vite: {
     resolve: {
       alias: {
