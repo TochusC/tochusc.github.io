@@ -28,6 +28,8 @@
   }
 </script>
 
+<div class="header-space" aria-hidden="true"></div>
+<div class="fixed-header">
 <header class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b py-3 sm:min-h-16 sm:py-0">
   <a href="/" class="shrink-0 text-sm font-semibold tracking-tight" aria-label="Zuyao Xu home">Zuyao Xu</a>
   <div class="order-3 flex items-center gap-1">
@@ -38,3 +40,10 @@
     {#each links as link}<a href={link.href} aria-current={active === link.key ? 'page' : undefined} class="inline-flex items-center gap-1.5 border-b-2 py-2 transition-colors {active === link.key ? 'border-foreground font-medium text-foreground' : 'border-transparent text-muted-foreground hover:text-foreground'}"><Feather size={14} strokeWidth={1.5} aria-hidden="true"/>{link.label}</a>{/each}
   </nav>
 </header>
+</div>
+<style>
+.header-space{height:64px}
+.fixed-header{position:fixed;inset:0 0 auto;z-index:60;background:hsl(var(--background));border-bottom:1px solid hsl(var(--border))}
+.fixed-header header{max-width:1536px;width:calc(100% - 64px);height:64px;margin:auto;border-bottom:0}
+@media(max-width:639px){.fixed-header header{width:calc(100% - 40px);padding-top:0;padding-bottom:0}}
+</style>

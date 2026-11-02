@@ -60,6 +60,7 @@
         <div class="art-grid"></div><div class="sun"></div><div class="arch"></div><div class="cutout"></div><div class="fine-orbit"></div><span class="art-star">✳</span>
       </div>
     </div>
+    <p class="figure-credit" lang="en"><em>An open mind</em> — Figure by GPT-6</p>
   </section>
   <section bind:this={entries} id="entries" class="entries" aria-labelledby="entries-title">
     <div class="section-heading"><h2 id="entries-title">{zh ? '随笔与阅读' : 'Writing & reading'}<span class="entry-count">({String(posts.length).padStart(2,'0')})</span></h2><button class="cover-return" on:click={returnToCover}>{zh ? '返回封面 ↑' : 'Cover ↑'}</button></div>
@@ -69,7 +70,7 @@
     {:else}
       <div class="empty-page"><span class="empty-mark" aria-hidden="true">“</span><div><p class="empty-title">{zh ? '故事，还在酝酿。' : 'The first page is still unwritten.'}</p><p class="empty-note">{zh ? '这里还没有发布的文章。等一些想法慢慢长成文字。' : 'No posts published yet. Giving a few ideas time to find their words.'}</p></div><span class="margin-note" lang="en">Room for<br/>what comes next.</span></div>
     {/if}
-  <footer class="journal-footer"><a href="/">← {zh ? '回到我的主页' : 'Back to my academic home'}</a><span lang="en">Always a work in progress. ✳</span></footer>
+  <footer class="journal-footer"><a href="/">← {zh ? '回到我的主页' : 'Back to profile'}</a><span lang="en">Always a work in progress. ✳</span></footer>
   </section>
   </div>
 </main>
@@ -147,4 +148,8 @@
 .recommendation p::first-letter{float:left;font-family:Georgia,"Songti SC","SimSun",serif;font-size:3.35em;line-height:.95;padding:.08em .14em 0 0;color:#465840}
 :global(.dark) .recommendation p::first-letter{color:#d0dfc2}
 @media(max-width:700px){.cover-copy{top:22px}}
+
+.figure-credit{position:absolute;left:32px;bottom:24px;font-size:10px;letter-spacing:.025em;color:hsl(var(--muted-foreground));z-index:3}
+.entries{padding-top:88px;scroll-padding-top:88px}
+@media(max-width:700px){.figure-credit{left:20px;bottom:24px;font-size:9px}.entries{padding-top:84px}}
 </style>
