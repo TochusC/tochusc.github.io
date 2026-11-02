@@ -1,4 +1,5 @@
 ---
+import BackToTop from '../components/BackToTop.svelte';
 interface Props {
   title: string;
   description?: string;
@@ -22,6 +23,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="min-h-[100dvh] bg-background font-sans antialiased">
     <slot />
+    <BackToTop client:load />
   </body>
 </html>
 

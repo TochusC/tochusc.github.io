@@ -194,7 +194,7 @@
     .profile-primary { grid-column: span 2; align-self: stretch; display: flex; flex-direction: column; }
     .profile-hero { flex: none; }
     .profile-workspace { flex: 1; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.8fr); align-items: start; }
-    .profile-sidebar, .profile-details, .profile-results {
+    .profile-details, .profile-results {
       position: sticky;
       align-self: start;
       top: min(var(--column-start, 1.5rem), calc(100dvh - var(--column-height, 0px) - 1.5rem));
