@@ -1,34 +1,27 @@
 <script lang="ts">
   import type { Publication } from '$lib/data';
+  import { paperDetail } from '$lib/portfolio';
+  import { language } from '$lib/stores';
+  import { publicationResources } from '$lib/publication-resources';
   import { Badge } from './ui/badge';
-  import { ArrowUpRight } from 'lucide-svelte';
+  import Authors from './Authors.svelte';
   export let publications: Publication[];
-  const labels: Record<Publication['status'], string> = {
-    published: 'Published',
-    accepted: 'Accepted',
-    preprint: 'Preprint',
-    poster: 'Poster accepted',
-  };
 </script>
 <div class="divide-y">
   {#each publications as p}
-    <article class="py-6 first:pt-0 last:pb-0">
-      <div lang="en" class="mb-3 flex flex-wrap items-center gap-2">
-        {#each p.venue.split(' · ') as venue, index}
-          <Badge variant={index === 0 && p.status !== 'preprint' ? 'default' : 'secondary'}>{venue}</Badge>
-        {/each}
-        <span class="text-xs text-muted-foreground">{labels[p.status]}</span>
-      </div>
-      <h2 class="text-base font-semibold leading-7 tracking-tight">{#if p.link}<a href={p.link} target="_blank" rel="noreferrer" class="hover:underline underline-offset-4">{p.title}<ArrowUpRight class="ml-1 inline h-4 w-4" /></a>{:else}{p.title}{/if}</h2>
-      <p class="mt-2 text-sm leading-6 text-muted-foreground">{p.authors}</p>
-      {#if p.role}<p class="mt-1 text-xs font-medium">{p.role}</p>{/if}
-      {#if p.resources?.length}
-        <div lang="en" class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium">
-          {#each p.resources as resource}
-            <a href={resource.href} target="_blank" rel="noreferrer" aria-label={`${resource.label}: ${p.title}`} class="inline-flex items-center underline underline-offset-4 hover:opacity-70">{resource.label}<ArrowUpRight size={12} class="ml-1" /></a>
-          {/each}
+    {@const detail = paperDetail(p.title)}
+    {@const preview = detail?.preview ?? detail?.images[0]}
+    <article class="py-4 first:pt-0 last:pb-0">
+      <div class={preview ? 'grid gap-3 min-[375px]:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] sm:gap-4' : ''}>
+        {#if preview && detail}
+          <div class="block w-full self-center overflow-hidden rounded-md border bg-[#f4f4f1]"><img src={preview.src} width={preview.width} height={preview.height} alt={preview.caption[$language]} loading="lazy" class="h-auto w-full object-contain"/></div>
+        {/if}
+        <div class="min-w-0 self-center">
+          <div lang="en" class="mb-2 flex flex-wrap items-center gap-1.5">{#each p.venue.split(' · ') as venue,index}<Badge variant={index === 0 && p.status !== 'preprint' ? 'default' : 'secondary'}>{venue}</Badge>{/each}</div>
+          <div class="leading-6"><h2 class="inline text-sm font-semibold tracking-tight"><a href={p.link} target="_blank" rel="noreferrer" class="hover:underline underline-offset-4">{p.title}</a></h2>{#each publicationResources(p) as resource}<a href={resource.href} target="_blank" rel="noreferrer" lang="en" aria-label={`${resource.label}: ${p.title}`} class="ml-2 inline-block whitespace-nowrap text-xs font-normal tracking-normal text-muted-foreground underline underline-offset-4 hover:text-foreground">[{resource.label}]</a>{/each}</div>
+          <p class="mt-1.5 text-xs leading-5 text-muted-foreground"><Authors names={p.authors}/></p>
         </div>
-      {/if}
+      </div>
     </article>
   {/each}
 </div>

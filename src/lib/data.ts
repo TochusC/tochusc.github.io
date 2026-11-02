@@ -17,7 +17,6 @@ export interface Publication {
   link?: string;
   resources?: { label: string; href: string }[];
   status: 'published' | 'preprint' | 'accepted' | 'poster';
-  role?: string;
 }
 
 export interface NewsItem {
@@ -56,7 +55,7 @@ export interface ProfileData {
   };
 }
 
-// Publication links verified against official sources on 2026-09-29.
+// Publication metadata is maintained from publisher and arXiv records.
 export const profileData: ProfileData = {
   "name": "许祖耀",
   "introduction": "我是许祖耀，南开大学网络空间安全专业硕士研究生，师从李想老师。我的研究聚焦 DNS 与互联网基础设施安全、互联网测量，以及大语言模型与智能体安全。",
@@ -81,12 +80,25 @@ export const profileData: ProfileData = {
   },
   "publications": [
     {
+      "title": "Proof-of-Agentness: Towards Verifying Agents on the Web",
+      "authors": "Zuyao Xu, Xiang Li",
+      "venue": "arXiv",
+      "year": 2026,
+      "status": "preprint",
+      "link": "https://arxiv.org/abs/2610.35288",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2610.35288"
+        }
+      ]
+    },
+    {
       "title": "Ollama in the Wild: A Longitudinal Measurement of Exposed Ollama LLM Endpoints at Internet Scale",
       "authors": "Zuyao Xu, Xiang Li, Yuqi Qiu, Lu Sun",
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "第一作者",
       "link": "https://arxiv.org/abs/2609.07115",
       "resources": [
         {
@@ -106,7 +118,6 @@ export const profileData: ProfileData = {
       "year": 2026,
       "link": "https://arxiv.org/abs/2602.06718",
       "status": "poster",
-      "role": "共同第一作者（第一顺位）",
       "resources": [
         {
           "label": "PDF",
@@ -124,8 +135,17 @@ export const profileData: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "共同第一作者（第三顺位）",
-      "link": "https://doi.org/10.1145/3777912.3847607"
+      "link": "https://doi.org/10.1145/3777912.3847607",
+      "resources": [
+        {
+          "label": "arXiv PDF",
+          "href": "https://arxiv.org/pdf/2610.38398"
+        },
+        {
+          "label": "arXiv",
+          "href": "https://arxiv.org/abs/2610.38398"
+        }
+      ]
     },
     {
       "title": "CAIRN: Dynamic Fact-Intent DAGs for Multi-Agent Exploration",
@@ -139,8 +159,7 @@ export const profileData: ProfileData = {
           "href": "https://arxiv.org/pdf/2609.32700"
         }
       ],
-      "status": "preprint",
-      "role": "共同第一作者（第一顺位）"
+      "status": "preprint"
     },
     {
       "title": "aCAPTCHA: Verifying That an Entity Is a Capable Agent via Asymmetric Hardness",
@@ -163,7 +182,6 @@ export const profileData: ProfileData = {
       "year": 2025,
       "link": "https://doi.org/10.1145/3719027.3744832",
       "status": "published",
-      "role": "第三作者",
       "resources": [
         {
           "label": "PDF",
@@ -291,6 +309,20 @@ export const profileData: ProfileData = {
   "news": [
     {
       "tag": "publication",
+      "date": "2026-10-28",
+      "title": "ATP 通信架构论文发布于 arXiv",
+      "description": "面向 Agentic Web 的跨组织通信架构与原型评估。",
+      "titleLink": "https://arxiv.org/abs/2610.38398"
+    },
+    {
+      "tag": "publication",
+      "date": "2026-10-26",
+      "title": "Proof-of-Agentness 发布于 arXiv",
+      "description": "探索 Web 服务如何验证访问者是否为 AI 智能体。",
+      "titleLink": "https://arxiv.org/abs/2610.35288"
+    },
+    {
+      "tag": "publication",
       "date": "2026-09-16",
       "title": "CVE-2026-19668 获 ISC 官方致谢",
       "descriptionLink": "https://kb.isc.org/docs/cve-2026-19668",
@@ -300,14 +332,14 @@ export const profileData: ProfileData = {
       "tag": "publication",
       "date": "2026-09",
       "title": "ATP 获 IMC 2026 Poster 录用",
-      "description": "智能体间认证与消息通信协议，共同第一作者（第三顺位）。",
+      "description": "智能体间认证与消息通信协议。",
       "titleLink": "https://doi.org/10.1145/3777912.3847607"
     },
     {
       "tag": "publication",
       "date": "2026-08",
       "title": "Ollama in the Wild 获 IMC 2026 录用",
-      "description": "开放 Ollama 端点的长期互联网测量，第一作者。",
+      "description": "开放 Ollama 端点的长期互联网测量。",
       "titleLink": "https://arxiv.org/abs/2609.07115"
     },
     {
@@ -334,7 +366,7 @@ export const profileData: ProfileData = {
       "tag": "publication",
       "date": "2026-04",
       "title": "GhostCite 获 IEEE S&P 2026 Poster 录用",
-      "description": "共同第一作者（第一顺位）。",
+      "description": "大语言模型时代的引用有效性分析。",
       "titleLink": "https://sp2026.ieee-security.org/posters.html#collapse-26"
     },
     {
@@ -378,12 +410,25 @@ export const profileDataEn: ProfileData = {
   },
   "publications": [
     {
+      "title": "Proof-of-Agentness: Towards Verifying Agents on the Web",
+      "authors": "Zuyao Xu, Xiang Li",
+      "venue": "arXiv",
+      "year": 2026,
+      "status": "preprint",
+      "link": "https://arxiv.org/abs/2610.35288",
+      "resources": [
+        {
+          "label": "PDF",
+          "href": "https://arxiv.org/pdf/2610.35288"
+        }
+      ]
+    },
+    {
       "title": "Ollama in the Wild: A Longitudinal Measurement of Exposed Ollama LLM Endpoints at Internet Scale",
       "authors": "Zuyao Xu, Xiang Li, Yuqi Qiu, Lu Sun",
       "venue": "ACM IMC 2026",
       "year": 2026,
       "status": "accepted",
-      "role": "First author",
       "link": "https://arxiv.org/abs/2609.07115",
       "resources": [
         {
@@ -403,7 +448,6 @@ export const profileDataEn: ProfileData = {
       "year": 2026,
       "link": "https://arxiv.org/abs/2602.06718",
       "status": "poster",
-      "role": "Equal contribution · first listed",
       "resources": [
         {
           "label": "PDF",
@@ -421,8 +465,17 @@ export const profileDataEn: ProfileData = {
       "venue": "ACM IMC 2026 Poster · CCF-NSS 2026 Poster",
       "year": 2026,
       "status": "accepted",
-      "role": "Co-first author · third listed",
-      "link": "https://doi.org/10.1145/3777912.3847607"
+      "link": "https://doi.org/10.1145/3777912.3847607",
+      "resources": [
+        {
+          "label": "arXiv PDF",
+          "href": "https://arxiv.org/pdf/2610.38398"
+        },
+        {
+          "label": "arXiv",
+          "href": "https://arxiv.org/abs/2610.38398"
+        }
+      ]
     },
     {
       "title": "CAIRN: Dynamic Fact-Intent DAGs for Multi-Agent Exploration",
@@ -436,8 +489,7 @@ export const profileDataEn: ProfileData = {
           "href": "https://arxiv.org/pdf/2609.32700"
         }
       ],
-      "status": "preprint",
-      "role": "Equal contribution · first listed"
+      "status": "preprint"
     },
     {
       "title": "aCAPTCHA: Verifying That an Entity Is a Capable Agent via Asymmetric Hardness",
@@ -460,7 +512,6 @@ export const profileDataEn: ProfileData = {
       "year": 2025,
       "link": "https://doi.org/10.1145/3719027.3744832",
       "status": "published",
-      "role": "Third author",
       "resources": [
         {
           "label": "PDF",
@@ -588,6 +639,20 @@ export const profileDataEn: ProfileData = {
   "news": [
     {
       "tag": "publication",
+      "date": "2026-10-28",
+      "title": "ATP communication architecture preprint on arXiv",
+      "description": "Cross-organization communication architecture and prototype evaluation for the Agentic Web.",
+      "titleLink": "https://arxiv.org/abs/2610.38398"
+    },
+    {
+      "tag": "publication",
+      "date": "2026-10-26",
+      "title": "Proof-of-Agentness preprint on arXiv",
+      "description": "Investigating how Web services can obtain evidence that a client is an AI agent.",
+      "titleLink": "https://arxiv.org/abs/2610.35288"
+    },
+    {
+      "tag": "publication",
       "date": "2026-09-16",
       "title": "ISC acknowledges CVE-2026-19668 report",
       "descriptionLink": "https://kb.isc.org/docs/cve-2026-19668",
@@ -597,14 +662,14 @@ export const profileDataEn: ProfileData = {
       "tag": "publication",
       "date": "2026-09",
       "title": "ATP accepted to IMC 2026 Posters",
-      "description": "Agent-to-agent authentication and messaging; co-first author, third listed.",
+      "description": "Agent-to-agent authentication and messaging.",
       "titleLink": "https://doi.org/10.1145/3777912.3847607"
     },
     {
       "tag": "publication",
       "date": "2026-08",
       "title": "Ollama in the Wild accepted to IMC 2026",
-      "description": "Longitudinal Internet measurement; first author.",
+      "description": "Longitudinal measurement of exposed Ollama endpoints.",
       "titleLink": "https://arxiv.org/abs/2609.07115"
     },
     {
@@ -631,7 +696,7 @@ export const profileDataEn: ProfileData = {
       "tag": "publication",
       "date": "2026-04",
       "title": "GhostCite accepted to IEEE S&P 2026 Posters",
-      "description": "Equal contribution, first listed.",
+      "description": "A large-scale study of citation validity in the LLM era.",
       "titleLink": "https://sp2026.ieee-security.org/posters.html#collapse-26"
     },
     {

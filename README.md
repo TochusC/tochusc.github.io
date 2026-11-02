@@ -49,3 +49,35 @@ npm run preview
 DNS 建议：根域名使用 GitHub Pages 官方 A 记录（`185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`）或支持的 ALIAS / ANAME；`www` 使用 CNAME 指向 `tochusc.github.io`。目前 DNS 服务商将根域名和 www 均配置为 CNAME 指向 `tochusc.github.io`。
 
 本项目使用自定义 Actions 发布；仓库内的 CNAME 文件不会代替 GitHub Pages 设置中的域名绑定。更新内容后推送 main，由 `.github/workflows/deploy.yml` 构建部署。此前准备的独立服务器部署文件仅保留在本地备用，不参与 GitHub Pages 部署。
+
+## 页面与图文内容
+
+- 首页保留紧凑概览、原有内容标签页和整页滚动。图片仅作静态展示，不提供点击跳转或放大；标题链接至论文或 GitHub 原始来源，PDF、DOI 等链接紧随标题显示。首页采用左图右文的紧凑布局，窄屏自动上下排列。
+- 顶部导航为 Home、Research、Projects、Blog。`src/components/SiteHeader.svelte` 统一导航、语言和主题；语言与主题选择在页面之间保留。
+- `src/lib/portfolio.ts` 维护论文、项目的稳定路径、双语介绍、分节内容及配图来源。原始论文元数据仍在 `src/lib/data.ts`，项目元数据在 `src/lib/projects.ts`。
+- `public/media/research/` 放论文原图；`public/media/projects/` 放公开仓库截图。图片仅作静态展示。论文原图按原比例展示，不修改数据与图例；ATP 使用论文中的正式架构图。
+- 论文作者列表仅加粗 Zuyao Xu / 许祖耀，不显示作者贡献或顺位说明。
+- `src/pages/sitemap.xml.ts` 自动包含首页、栏目、各详情页和已发布的 Blog 文章。
+
+### 发布 Blog
+
+在 `src/content/blog/` 添加 Markdown 文件。文章支持日期、语言、标签、草稿状态、目录与代码高亮。`writing-guide.md` 是不会发布的写作说明，首页与站点地图也不包含草稿。
+
+```yaml
+---
+title: "文章标题"
+description: "简短摘要"
+date: 2026-10-30
+lang: zh
+tags: [Research, Notes]
+draft: true
+---
+```
+
+正文使用 Markdown。图片放在 `public/media/blog/`，以 `/media/blog/文件名` 引用。准备好后将 `draft` 改为 `false`；运行本地预览检查，再推送 GitHub 发布。中英文文章可分别保存为独立文件。
+
+### 图文列表与组合预览
+
+Research 和 Projects 栏目每行展示一项，桌面左图右文，手机上下排列。`WorkDetail.preview` 指向组合预览；`images` 保留各张原图和来源，预览图片不提供点击交互。首页图片也使用这些预览，采用左图右文布局。GhostCite 使用完整框架图，折线图原图保存在图片素材中；Ollama 使用 Version Turnover（Figure 5）；CAIRN 与 Proof-of-Agentness 均使用 Figure 1。ATP 的新 arXiv 版本合并到原有条目，不重复列出。
+
+`python3 scripts/compose-previews.py` 使用 Pillow 重新生成 `public/media/previews/` 并更新对应元数据。脚本只裁去空白外边缘，按比例放入图框；不裁切坐标轴、图例或截图内容。论文预览选用同一论文中的方法与结果图，ATP 选用 arXiv 论文的架构与结果图。

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.svelte';
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({data}) => !data.draft && !data.externalUrl);
+  return posts.map(post => ({params:{slug:post.slug},props:{post}}));
+}
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+---
+<Layout title={`${post.data.title} | Zuyao Xu`} description={post.data.description}>
+  <div class="mx-auto max-w-[1600px] px-5 sm:px-8"><SiteHeader active="blog" client:load/><main id="main" class="mx-auto max-w-5xl py-10 sm:py-14"><a href="/blog/" class="text-xs text-muted-foreground">← Blog</a><div class="mt-7 grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_11rem]"><article lang={post.data.lang}><header class="mb-8 border-b pb-7"><p class="text-xs text-muted-foreground"><time datetime={post.data.date.toISOString()}>{post.data.date.toISOString().slice(0,10)}</time> · {post.data.tags.join(' / ')}</p><h1 class="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">{post.data.title}</h1><p class="mt-4 text-sm leading-7 text-muted-foreground">{post.data.description}</p></header><div class="article-body"><Content/></div></article><aside class="hidden border-l pl-5 text-xs leading-6 text-muted-foreground lg:sticky lg:top-8 lg:block"><p class="mb-3 font-semibold">{post.data.lang === 'zh' ? '本页内容' : 'On this page'}</p><nav>{headings.filter(h => h.depth === 2).map(h=><a class="mb-2 block hover:text-foreground" href={`#${h.slug}`}>{h.text}</a>)}</nav></aside></div></main></div>
+</Layout>
+<style>
+  .article-body { font-size:1rem; line-height:1.95; overflow-wrap:anywhere; }
+  .article-body :global(h2) { margin:2rem 0 1rem; font-size:1.35rem; font-weight:600; }
+  .article-body :global(h3) { margin:1.5rem 0 .75rem; font-size:1.1rem; font-weight:600; }
+  .article-body :global(p), .article-body :global(ul), .article-body :global(ol) { margin:1rem 0; }
+  .article-body :global(ul) { list-style:disc; padding-left:1.5rem; }
+  .article-body :global(ol) { list-style:decimal; padding-left:1.5rem; }
+  .article-body :global(a) { text-decoration:underline; text-underline-offset:4px; }
+  .article-body :global(pre) { overflow-x:auto; border-radius:.5rem; padding:1.25rem; font-size:.8rem; line-height:1.7; }
+  .article-body :global(img) { max-width:100%; height:auto; border-radius:.5rem; }
+  .article-body :global(blockquote) { border-left:2px solid hsl(var(--border)); padding-left:1.25rem; color:hsl(var(--muted-foreground)); }
+</style>

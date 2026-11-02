@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.svelte';
+import BlogIndex from '../../components/BlogIndex.svelte';
+const entries = await getCollection('blog', ({data}) => !data.draft);
+const posts = entries.sort((a,b)=> b.data.date.getTime()-a.data.date.getTime()).map(post => ({...post.data,date:post.data.date.toISOString().slice(0,10),href:post.data.externalUrl ?? `/blog/${post.slug}/`}));
+---
+<Layout title="Blog | Zuyao Xu" description="Research notes, technical projects, and personal writing by Zuyao Xu."><div class="journal-shell"><div class="journal-nav mx-auto max-w-[1600px] px-5 sm:px-8"><SiteHeader active="blog" client:load/></div><BlogIndex {posts} client:load/></div></Layout>
+
+<style is:global>
+.journal-nav{position:absolute;inset:0 0 auto;z-index:10}
+html:has(.journal-shell){scrollbar-width:none}html:has(.journal-shell)::-webkit-scrollbar{display:none}
+.journal-shell { min-height:100dvh; --journal-paper:#f2efe7; background:var(--journal-paper); color:#292c26; --background:44 30% 93%; --foreground:88 7% 16%; --muted:43 18% 87%; --muted-foreground:75 5% 42%; --border:45 15% 77%; }
+.dark .journal-shell {--journal-paper:#20251f;background:var(--journal-paper);color:#eeeade;--background:108 9% 13%;--foreground:45 30% 90%;--muted:100 8% 20%;--muted-foreground:45 10% 65%;--border:95 8% 30%;}
+@media(prefers-reduced-motion:no-preference){
+.journal-shell::after{content:"";position:fixed;inset:0;z-index:100;pointer-events:none;background:#fff;animation:paper-reveal .9s cubic-bezier(.22,1,.36,1) both}
+.dark .journal-shell::after{background:#171717}
+@keyframes paper-reveal{0%{opacity:1}100%{opacity:0;visibility:hidden}}
+}
+</style>

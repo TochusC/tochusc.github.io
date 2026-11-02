@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.svelte';
+import WorkDetail from '../../components/WorkDetail.svelte';
+import { paperDetails } from '../../lib/portfolio';
+import { profileDataEn } from '../../lib/data';
+export function getStaticPaths() {
+  return paperDetails.map(detail => ({params:{slug:detail.slug},props:{detail,publication:detail.metadata ?? profileDataEn.publications.find(p => detail.match && p.title.startsWith(detail.match))}}));
+}
+const { detail, publication } = Astro.props;
+if (!publication) throw new Error(`Missing publication metadata: ${detail.slug}`);
+---
+<Layout title={`${publication.title} | Zuyao Xu`} description={detail.summary.en}>
+  <div class="mx-auto max-w-[1600px] px-5 sm:px-8"><SiteHeader active="research" client:load/><WorkDetail {detail} {publication} client:load/></div>
+</Layout>

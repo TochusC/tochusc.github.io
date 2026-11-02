@@ -1,0 +1,6 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.svelte';
+import WorkIndex from '../../components/WorkIndex.svelte';
+---
+<Layout title="Projects | Zuyao Xu" description="Open-source projects, software interfaces, and implementation notes by Zuyao Xu."><div class="mx-auto max-w-[1600px] px-5 sm:px-8"><SiteHeader active="projects" client:load/><WorkIndex kind="projects" client:load/></div></Layout>

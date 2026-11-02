@@ -1,11 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { language, getProfileData } from '$lib/stores';
-  import { Button, buttonVariants } from './ui/button';
+  import SiteHeader from './SiteHeader.svelte';
+  import { buttonVariants } from './ui/button';
   import * as Card from './ui/card';
   import * as Tabs from './ui/tabs';
   import { Badge } from './ui/badge';
-  import { ArrowUpRight, Download, Github, Globe, GraduationCap, Languages, Mail, Microscope, Moon, Sun, ShieldCheck, UsersRound } from 'lucide-svelte';
+  import { ArrowUpRight, Download, Github, Globe, GraduationCap, Mail, Microscope, ShieldCheck, UsersRound } from 'lucide-svelte';
   import PublicationList from './PublicationList.svelte';
   import AwardList from './AwardList.svelte';
   import NewsList from './NewsList.svelte';
@@ -14,7 +15,6 @@
 
   $: zh = $language === 'zh';
   $: data = getProfileData($language);
-  let dark = false;
   let tab = 'publications';
   let sidebar: HTMLElement;
   let details: HTMLDivElement;
@@ -25,8 +25,6 @@
   let workspaceStart = 0;
   let detailsStart = 0;
   onMount(() => {
-    try { dark = localStorage.getItem('theme') === 'dark'; } catch {}
-    document.documentElement.classList.toggle('dark', dark);
 
     // Each column stops when its end is visible, without adding a scroll area.
     const measureSidebars = () => {
@@ -50,24 +48,12 @@
     };
   });
   $: if (typeof document !== 'undefined') document.documentElement.lang = zh ? 'zh-CN' : 'en';
-  function toggleTheme() {
-    dark = !dark;
-    document.documentElement.classList.toggle('dark', dark);
-    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
-  }
+
 </script>
 
 <div class="profile-shell mx-auto max-w-[1600px] px-5 sm:px-8">
   <a class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:p-3" href="#main">{zh ? '跳转到正文' : 'Skip to content'}</a>
-  <header class="profile-header flex min-h-16 items-center justify-between gap-3 border-b">
-    <a href="/" class="text-sm font-semibold tracking-tight" aria-label={zh ? '许祖耀主页' : 'Zuyao Xu home'}>Zuyao Xu</a>
-    <div class="flex items-center gap-1">
-      <Button variant="ghost" size="icon" aria-label={zh ? 'Switch to English' : '切换到中文'} title={zh ? 'Switch to English' : '切换到中文'} on:click={() => language.toggle()}><Languages size={18} aria-hidden="true" /></Button>
-      <Button variant="ghost" size="icon" aria-label={zh ? (dark ? '切换浅色模式' : '切换深色模式') : (dark ? 'Switch to light theme' : 'Switch to dark theme')} on:click={toggleTheme}>
-        {#if dark}<Sun size={17} />{:else}<Moon size={17} />{/if}
-      </Button>
-    </div>
-  </header>
+  <SiteHeader active="home" />
 
   <main id="main" class="profile-main py-6">
     <div class="profile-primary min-w-0">
