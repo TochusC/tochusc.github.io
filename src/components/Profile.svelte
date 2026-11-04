@@ -142,6 +142,16 @@
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             <Card.Root>
               <Card.Header class="p-4 pb-2">
+                <div class="mb-2"><Badge lang="en">CVSS 3.1 · 5.3 · Medium</Badge></div>
+                <Card.Title class="text-base">CVE-2026-85501</Card.Title>
+              </Card.Header>
+              <Card.Content class="p-4 pt-0">
+                <p class="text-sm leading-6 text-muted-foreground">{zh ? 'ReTrap：Unbound DNSSEC 验证中的算法复杂度漏洞，可导致服务性能下降。与李想共同发现并负责任披露，获 NLnet Labs 署名致谢。' : 'ReTrap: DNSSEC algorithmic complexity vulnerabilities that degrade Unbound service. Jointly discovered and responsibly disclosed with Xiang Li, as credited by NLnet Labs.'}</p>
+                <a class="mt-3 inline-flex items-center text-sm underline underline-offset-4" href="https://nlnetlabs.nl/downloads/unbound/CVE-2026-85501.txt" target="_blank" rel="noreferrer">{zh ? '官方公告' : 'NLnet Labs advisory'}<ArrowUpRight size={14} class="ml-1" /></a>
+              </Card.Content>
+            </Card.Root>
+            <Card.Root>
+              <Card.Header class="p-4 pb-2">
                 <div class="mb-2"><Badge variant="outline" lang="en">CVSS 3.1 · 5.3 · Medium</Badge></div>
                 <Card.Title class="text-base">CVE-2026-19668</Card.Title>
               </Card.Header>
