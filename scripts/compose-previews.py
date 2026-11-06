@@ -6,13 +6,12 @@ never cropped to fill a frame.
 """
 from pathlib import Path
 import json
-from PIL import Image, ImageDraw, ImageFont, ImageChops, ImageOps
+from PIL import Image, ImageDraw, ImageChops, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
 OUTPUT = PUBLIC / 'media/previews'
 OUTPUT.mkdir(parents=True, exist_ok=True)
-FONT = ImageFont.truetype('/System/Library/Fonts/Supplemental/Arial.ttf', 20) if Path('/System/Library/Fonts/Supplemental/Arial.ttf').exists() else ImageFont.load_default()
 CAPTIONS = {
     'ollama-in-the-wild': ('Version turnover: daily version-share evolution (Figure 5).','版本更替：每日版本占比变化（图 5）。'),
     'ghostcite': ('The CiteVerifier framework and experimental pipeline (Figure 1).','CiteVerifier 框架与实验流程（图 1）。'),
@@ -44,17 +43,14 @@ def load_image(src):
     return image
 
 
-def panel(canvas, src, box, label=''):
+def panel(canvas, src, box):
     x, y, w, h = box
     draw = ImageDraw.Draw(canvas)
     draw.rounded_rectangle((x,y,x+w,y+h), radius=14, fill='white', outline='#dededb', width=2)
     padding = 18
-    label_height = 32 if label else 0
-    if label:
-        draw.text((x+padding,y+13), label, font=FONT, fill='#686863')
     image = load_image(src)
-    image = ImageOps.contain(image, (w-padding*2,h-padding*2-label_height), Image.Resampling.LANCZOS)
-    canvas.paste(image,(x+(w-image.width)//2,y+label_height+(h-label_height-image.height)//2))
+    image = ImageOps.contain(image, (w-padding*2,h-padding*2), Image.Resampling.LANCZOS)
+    canvas.paste(image,(x+(w-image.width)//2,y+(h-image.height)//2))
 
 
 def compose(detail, kind):
@@ -64,24 +60,24 @@ def compose(detail, kind):
     sources = {Path(i['src']).stem:i['src'] for i in images}
     if slug == 'ollama-in-the-wild':
         canvas = Image.new('RGB',(1200,440),'#f4f4f1')
-        panel(canvas,sources['ollama-version-turnover'],(24,24,1152,392),'FIGURE 5 / VERSION TURNOVER')
+        panel(canvas,sources['ollama-version-turnover'],(24,24,1152,392))
     elif slug == 'ghostcite':
         canvas = Image.new('RGB',(1200,590),'#f4f4f1')
-        panel(canvas,sources['ghostcite-framework'],(24,24,1152,542),'FIGURE 1 / CITEVERIFIER')
+        panel(canvas,sources['ghostcite-framework'],(24,24,1152,542))
     elif slug == 'cairn':
         canvas = Image.new('RGB',(1200,440),'#f4f4f1')
-        panel(canvas,sources['cairn-dag'],(24,24,1152,392),'FIGURE 1 / SHARED FACT-INTENT DAG')
+        panel(canvas,sources['cairn-dag'],(24,24,1152,392))
     elif slug == 'agent-transfer-protocol':
-        panel(canvas,sources['atp-paper-architecture'],(28,28,1144,704),'FIGURE 1 / CROSS-DOMAIN ARCHITECTURE')
+        panel(canvas,sources['atp-paper-architecture'],(28,28,1144,704))
     elif slug == 'proof-of-agentness':
         canvas = Image.new('RGB',(1200,530),'#f4f4f1')
-        panel(canvas,sources['poa-web-context'],(24,24,1152,482),'FIGURE 1 / HUMANS, AGENTS, AND SCRIPTED ABUSE')
+        panel(canvas,sources['poa-web-context'],(24,24,1152,482))
     elif slug == 'acaptcha':
-        panel(canvas,sources['acaptcha-timing'],(28,130,640,500),'FIGURE 2 / TIMING SEPARATION')
-        panel(canvas,sources['acaptcha-threshold'],(690,200,482,360),'FIGURE 3 / THRESHOLD')
+        panel(canvas,sources['acaptcha-timing'],(28,130,640,500))
+        panel(canvas,sources['acaptcha-threshold'],(690,200,482,360))
     elif slug == 'rebirthday':
-        panel(canvas,sources['rebirthday-comparison'],(28,85,520,590),'FIGURE 4 / BIRTHDAY ATTACK')
-        panel(canvas,sources['rebirthday-model'],(570,205,602,350),'FIGURE 5 / THREAT MODEL')
+        panel(canvas,sources['rebirthday-comparison'],(28,85,520,590))
+        panel(canvas,sources['rebirthday-model'],(570,205,602,350))
     elif slug == 'qq-robot':
         for i,key in enumerate(['qq-robot','qq-robot-conversation','qq-robot-voice']):
             panel(canvas,sources[key],(24+i*392,28,368,704))
